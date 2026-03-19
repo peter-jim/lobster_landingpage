@@ -1,0 +1,14 @@
+{
+  "name": "openclaw-email-service",
+  "version": "1.0.0",
+  "description": "Email collection backend for OpenClaw landing page",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.0"
+  }
+}

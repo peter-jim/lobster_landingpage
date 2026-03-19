@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f2330d",
+                        "primary-coral": "#ff6b52",
+                        "background-light": "#f8f6f5",
+                        "background-dark": "#221310",
+                        "mint": "#e6f7f2",
+                        "lavender": "#f0efff",
+                        "petal": "#fff0f3",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Lobster.pet - Visual Mod Garden</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<main class="flex-1 w-full">
+<div class="w-full flex flex-col flex-1">
+        <!-- Waitlist Button (Fixed Top Right) -->
+        <div class="fixed top-6 right-6 md:top-8 md:right-8 z-50 pointer-events-auto">
+            <button id="openWaitlistBtn" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary-coral hover:bg-primary text-white font-bold shadow-[0_4px_0_0_#d12c0b] active:translate-y-[2px] active:shadow-none transition-all border-2 border-[rgba(255,255,255,0.2)]">
+                <span class="material-symbols-outlined mr-2 text-xl">notifications_active</span>
+                <span class="truncate text-base tracking-wide">加入预约</span>
+            </button>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="relative min-h-screen flex items-center justify-center overflow-hidden w-full m-0 p-0">
+            <!-- Immersive Background -->
+            <div class="absolute inset-0 z-0 bg-black"> <!-- Added black behind the image in case of loading or aspect ratio issues -->
+                <img src="./banner.png" alt="Game Map Scene" class="w-full h-full object-cover">
+                <!-- Removed the full-screen dark overlay to let the map shine -->
+            </div>
+
+            <!-- Hero Content -->
+            <!-- Significantly increased the darkness and size of the radial gradient to provide more separation from the busy center map -->
+            <div class="relative z-10 w-full max-w-5xl px-8 py-16 text-center mt-16 pointer-events-none flex flex-col items-center select-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.6)_0%,transparent_75%)] before:-z-10 before:pointer-events-none">
+                
+                <!-- Main Title -->
+                <h1 class="text-[#FFE600] text-6xl md:text-8xl font-black leading-tight tracking-tight mb-6 [text-shadow:-2px_-2px_0_#000,2px_-2px_0_#000,-2px_2px_0_#000,2px_2px_0_#000,0_4px_24px_rgba(0,0,0,1),0_0_40px_rgba(0,0,0,0.8)] [paint-order:stroke_fill] md:whitespace-nowrap">
+                    OpenClaw <br class="md:hidden"/><span class="text-[#00FF41] xl:text-5xl text-3xl block mt-4 drop-shadow-lg">专属桌面宠物小龙虾</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-white text-lg md:text-2xl font-bold leading-normal max-w-2xl mx-auto mb-12 [text-shadow:-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,1px_1px_0_#000,0_4px_16px_rgba(0,0,0,1),0_0_24px_rgba(0,0,0,0.8)]">
+                    领养你的赛博小龙虾，陪伴工作、趣味养成、解锁升级，打造最强桌面伙伴。
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-6 pointer-events-auto">
+                    <!-- Styled buttons to look more like game UI elements (thicker borders, distinct shadows) -->
+                    <button id="downloadMacBtn" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-zinc-900 border-2 border-zinc-700 text-white text-lg font-bold shadow-[0_4px_0_0_#3f3f46] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#3f3f46] active:translate-y-[2px] active:shadow-none transition-all">
+                        <span class="material-symbols-outlined text-2xl">desktop_mac</span>
+                        Download for Mac
+                    </button>
+                    <button id="downloadWinBtn" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-primary border-2 border-primary-coral text-white text-lg font-bold shadow-[0_4px_0_0_#991b1b] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#991b1b] active:translate-y-[2px] active:shadow-none transition-all">
+                        <span class="material-symbols-outlined text-2xl">terminal</span>
+                        Download for Windows
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Waitlist Modal -->
+        <div id="waitlistModal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+            <!-- Backdrop -->
+            <div id="modalBackdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+            
+            <!-- Modal Content -->
+            <div class="relative w-full max-w-md bg-zinc-900 border-4 border-zinc-700 rounded-3xl p-8 m-4 shadow-[0_12px_0_0_#18181b,0_0_50px_rgba(0,0,0,0.8)] z-10 text-white transform transition-all text-center">
+                <!-- Close Button -->
+                <button id="closeModalBtn" class="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors">
+                    <span class="material-symbols-outlined text-3xl">close</span>
+                </button>
+                
+                <div class="size-16 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-6 border-2 border-primary-coral">
+                    <span class="material-symbols-outlined text-4xl text-primary-coral drop-shadow">mail</span>
+                </div>
+                
+                <h3 class="text-2xl font-black mb-2 tracking-tight">获取 OpenClaw 最新动态</h3>
+                <p class="text-zinc-400 font-medium mb-8 text-sm">留下您的邮箱，第一时间获取内测资格、产品发布和更新通知！</p>
+                
+                <form id="subscribeForm" class="flex flex-col gap-4">
+                    <input type="email" id="emailInput" required placeholder="输入您的邮箱地址..." class="w-full bg-zinc-800 border-2 border-zinc-600 rounded-xl px-4 py-3 text-white placeholder:text-zinc-500 focus:outline-none focus:border-primary-coral focus:ring-1 focus:ring-primary-coral transition-colors font-medium">
+                    <button type="submit" class="w-full h-12 flex items-center justify-center gap-2 bg-primary-coral hover:bg-primary text-white text-lg font-bold rounded-xl shadow-[0_4px_0_0_#d12c0b] active:translate-y-[2px] active:shadow-none transition-all mt-2">
+                        立即订阅
+                        <span class="material-symbols-outlined text-xl">send</span>
+                    </button>
+                </form>
+                <p class="text-xs text-zinc-500 mt-6 mt-4">我们尊重您的隐私，绝不发送垃圾邮件。</p>
+            </div>
+        </div>
+
+<!-- Sections below temporarily hidden per user request -->
+<template>
+<!-- Horizontal Scroll Section -->
+<div class="mt-16">
+<div class="flex items-center justify-between px-4 pb-6">
+<h2 class="text-slate-900 dark:text-white text-3xl font-black leading-tight tracking-tight">Explore the Garden</h2>
+<button class="text-primary font-bold flex items-center gap-1 hover:underline">
+                                View All <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="flex overflow-x-auto pb-8 gap-6 scrollbar-hide px-4">
+<!-- Mint Card -->
+<div class="flex-none w-72 group cursor-pointer">
+<div class="relative w-full aspect-square bg-mint rounded-3xl p-4 transition-transform group-hover:scale-[1.02] border-2 border-white/50 shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-2xl" data-alt="Mint green pixel garden theme with plants" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB4BhIl4hX9QoGYyMp19ZgcgJS1OYBfL3vIPThb32xDeHRR3q9VEC9ibxRnXD4eM4W3f7Y7L4InfgA6R9Utwqgpv7EERY9cSkpYTsgMC7DWoYn-Z2mrN4sh-oc3gXoWZE7iOV0awH6vri_qH3yfi9lw0kQL-Jgh8L-CWyAsEjLeuOyXuu7BIxjjkS7oGSWzw132y8fGTRrlUG6F5TN2hj-LEDgNxssXGadZYigTP1WluCf8qcHhOtZzAP1Dxp20QJPrQC0HLSbtTXrj");'></div>
+</div>
+<div class="mt-4 px-2">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Minty Fresh</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Garden Theme • Free</p>
+</div>
+</div>
+<!-- Lavender Card -->
+<div class="flex-none w-72 group cursor-pointer">
+<div class="relative w-full aspect-square bg-lavender rounded-3xl p-4 transition-transform group-hover:scale-[1.02] border-2 border-white/50 shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-2xl" data-alt="Lavender purple pixel sky theme with clouds" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBsZSks18PyiIhAyse8t4Bn9DJFgBMPxDwZe6d8Y2JMGqTBUyEM2uC1Iy_S8agK4HeHImPj8spVkRIj8aO1HHd8RDI2ScGX3j_gsY_eul8rMsbu19roF0G3Qg04caWubOt4cPNWFr4aTBPF2EGn7s4moH1KaMhYQw2N3S0dVPyd4pILzfw-O5wyubrKIRkCiUqvTE2QVGXLilusZot0eQ8tRv66n8uMxrNxDePGnfoutlovsIUKEOS8fK2a9gg6NL3T4KQ2r6JBgGig");'></div>
+</div>
+<div class="mt-4 px-2">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Lavender Dreams</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Sky Theme • Pro</p>
+</div>
+</div>
+<!-- Petal Card -->
+<div class="flex-none w-72 group cursor-pointer">
+<div class="relative w-full aspect-square bg-petal rounded-3xl p-4 transition-transform group-hover:scale-[1.02] border-2 border-white/50 shadow-sm">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-2xl" data-alt="Soft pink pixel furniture set with flowers" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDSynPcObqw1KGb_ONFXzjQAO1TAcq5u_CVqZAe5Wdx6Fo4Xa5_fY3OMySHAlRJxECu7Maj7p-93nnr5-YCcq6cMtJ8DMbdtFn5SypmA0cZDgDnOHDHC_TBQjUh9IJzcDcpdGpvEVxaXZoCVpngdf-CYU706ZR3BXelGFPUFDo2tEv3T3hD3v51gnQG5xAL4_QkG2X7O5RJGXclY2QRXiLzppMhJaF_1Drx8VRfZGNHjQyNVTehlr-c-B1JfgFdF9Cupy7PtElH0irs");'></div>
+</div>
+<div class="mt-4 px-2">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Soft Petals</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Furniture Set • Limited</p>
+</div>
+</div>
+<!-- Rainbow Card -->
+<div class="flex-none w-72 group cursor-pointer">
+<div class="relative w-full aspect-square bg-primary/5 rounded-3xl p-4 transition-transform group-hover:scale-[1.02] border-2 border-white/50 shadow-sm">
+<div class="w-full h-full bg-gradient-to-br from-orange-200 to-yellow-100 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-6xl text-primary/40">add_circle</span>
+</div>
+</div>
+<div class="mt-4 px-2">
+<p class="text-slate-900 dark:text-white text-lg font-bold">Create Your Own</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Mod Tool • Workshop</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Features Grid -->
+<div class="mt-16 bg-white/50 dark:bg-slate-900/50 rounded-[2.5rem] p-8 md:p-12 border border-white/20">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="flex flex-col gap-6">
+<div class="w-full aspect-[4/3] bg-gradient-to-tr from-mint to-lavender rounded-3xl overflow-hidden relative border-4 border-white shadow-lg" data-alt="Abstract pixel art gradient background with stars" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDHr5uFsnaC3VI4WfQ1kUkuHYHAtXwt2FONZZA2F4RCn5zN1P6Gq-V4HsfhsAOVjhW38F4yqHGWYfZkLMtG7rnKpwnXgZCirXFcx786U_DvoyOGOqViYJTIGVcGJWjNCWkxKnygQNlWDuQxgvOHwYkVkn5P91oXDGuJMWrNAoFIaj1jOJ0_h5iMWtNfRt9h9kWVzjT43zKV6mGwA1PWvdUmXeeQmypskIaXSOGDZXqlB6prQ7cryNTpZrMGtuy5Pvhqmqath9HZzVif");'>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-8xl text-white/80">auto_fix_high</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white text-2xl font-black mb-2">Soft Gradients</h3>
+<p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Experience beautifully crafted transitions and a soothing color palette designed for maximum coziness.</p>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="w-full aspect-[4/3] bg-gradient-to-tr from-petal to-primary/20 rounded-3xl overflow-hidden relative border-4 border-white shadow-lg" data-alt="Authentic pixel art character grid pattern" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEumjOOWrkgouTa_5ZB1WBZcuxIWGpOy_FQY6zW0OzsFkWI6j-ryyQOYBwAkAVgHDGHnFzY0BktZ_aC4fj3MWRV0jO4PmCp4dGV5Z0RSWTVXS0hB7bMyRi_BoJJowhpVpblWfoUlfsTp8tip1YRTsnNfTMcsuo8ilKxEjM5Ix--zFchAPW9i3l4uovUrRgAQoRQq-5MTGtD9Ce_FYhpl6X0raAR7nn10ZSbZhH3iA4DSze8louTFpwLmsy3qqxUU04mBsaI0pTIOG-");'>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-8xl text-white/80">grid_view</span>
+</div>
+</div>
+<div>
+<h3 class="text-slate-900 dark:text-white text-2xl font-black mb-2">Pixel Magic</h3>
+<p class="text-slate-600 dark:text-slate-400 font-medium leading-relaxed">Authentic pixel-art style that brings a nostalgic yet modern touch to your digital desktop garden.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-20 mb-20 text-center bg-primary rounded-[3rem] p-12 relative overflow-hidden text-white shadow-2xl">
+<div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-coral/30 rounded-full -ml-20 -mb-20 blur-3xl"></div>
+<div class="relative z-10 flex flex-col items-center gap-6">
+<h2 class="text-4xl md:text-5xl font-black leading-tight">Ready to start your journey?</h2>
+<p class="text-white/80 text-lg font-medium max-w-xl">
+                                Join over 50,000+ creators building their own pixel paradise. Your lobster friend is waiting for you!
+                            </p>
+<div class="flex flex-wrap justify-center gap-4 mt-4">
+<button class="bg-white text-primary px-10 py-4 rounded-2xl font-black text-xl shadow-[0_6px_0_0_#eeeeee] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all">
+                                    Adopt Now
+                                </button>
+<button class="bg-primary-coral/40 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all">
+                                    Join Discord
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 md:px-20 lg:px-40 py-12">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-3 text-primary opacity-60 grayscale hover:grayscale-0 transition-all">
+<span class="material-symbols-outlined text-3xl">pets</span>
+<span class="text-lg font-bold">Lobster.pet</span>
+</div>
+<div class="flex gap-8 text-sm font-semibold text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<div class="flex gap-4">
+<div class="size-10 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all cursor-pointer">
+<span class="material-symbols-outlined">share</span>
+</div>
+</div>
+</div>
+<div class="text-center mt-12 text-slate-400 text-xs font-medium">
+                © 2024 Lobster.pet. Made with love and pixels.
+            </div>
+</footer>
+</template>
+</div>
+</div>
+
+<script>
+    // ⚙️ 部署时修改为服务器实际地址，例如 'https://your-server.com'
+    const API_BASE = 'http://localhost:3000';
+
+    // ---------- Coming Soon Toast ----------
+    function showToast(message) {
+        const existing = document.getElementById('comingSoonToast');
+        if (existing) existing.remove();
+        const toast = document.createElement('div');
+        toast.id = 'comingSoonToast';
+        toast.textContent = message;
+        toast.style.cssText = 'position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:200;background:#18181b;color:#fff;padding:12px 28px;border-radius:12px;font-weight:700;font-size:15px;box-shadow:0 4px 24px rgba(0,0,0,0.4);border:2px solid #3f3f46;transition:opacity 0.3s;opacity:0;';
+        document.body.appendChild(toast);
+        requestAnimationFrame(() => { toast.style.opacity = '1'; });
+        setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Download buttons — Coming Soon
+        document.getElementById('downloadMacBtn').addEventListener('click', () => showToast('🦞 Mac 版即将上线，敬请期待！'));
+        document.getElementById('downloadWinBtn').addEventListener('click', () => showToast('🦞 Windows 版即将上线，敬请期待！'));
+
+        const modal = document.getElementById('waitlistModal');
+        const openBtn = document.getElementById('openWaitlistBtn');
+        const closeBtn = document.getElementById('closeModalBtn');
+        const backdrop = document.getElementById('modalBackdrop');
+        const form = document.getElementById('subscribeForm');
+        const emailInput = document.getElementById('emailInput');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        // Open modal
+        openBtn.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            clearFeedback();
+            setTimeout(() => { emailInput.focus(); }, 100);
+        });
+
+        // Close modal functions
+        const closeModal = () => {
+            modal.classList.add('hidden');
+            clearFeedback();
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        backdrop.addEventListener('click', closeModal);
+
+        // Escape key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // ---------- Feedback helpers ----------
+        function showFeedback(message, isSuccess) {
+            clearFeedback();
+            const div = document.createElement('div');
+            div.id = 'subscribeFeedback';
+            div.className = `mt-4 px-4 py-3 rounded-xl text-sm font-semibold ${
+                isSuccess
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-red-500/20 text-red-300 border border-red-500/30'
+            }`;
+            div.textContent = message;
+            form.appendChild(div);
+        }
+
+        function clearFeedback() {
+            const el = document.getElementById('subscribeFeedback');
+            if (el) el.remove();
+        }
+
+        function setLoading(loading) {
+            submitBtn.disabled = loading;
+            submitBtn.innerHTML = loading
+                ? '<span class="material-symbols-outlined animate-spin text-xl">progress_activity</span> 提交中...'
+                : '立即订阅 <span class="material-symbols-outlined text-xl">send</span>';
+        }
+
+        // ---------- Form submission ----------
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = emailInput.value.trim();
+            if (!email) return;
+
+            setLoading(true);
+            clearFeedback();
+
+            try {
+                const resp = await fetch(`${API_BASE}/api/subscribe`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email }),
+                });
+                const data = await resp.json();
+
+                if (data.success) {
+                    showFeedback(data.message || '订阅成功！🦞', true);
+                    emailInput.value = '';
+                    // 2 秒后自动关闭弹窗
+                    setTimeout(closeModal, 2000);
+                } else {
+                    showFeedback(data.message || '提交失败，请重试', false);
+                }
+            } catch (err) {
+                console.error('提交失败:', err);
+                showFeedback('网络错误，请检查网络后重试', false);
+            } finally {
+                setLoading(false);
+            }
+        });
+    });
+</script>
+</body></html>
