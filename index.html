@@ -32,6 +32,155 @@
 <title>Lobster.pet - Visual Mod Garden</title>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Loading Overlay -->
+<div id="loadingOverlay">
+    <!-- Particle canvas -->
+    <canvas id="loadingParticles"></canvas>
+
+    <!-- Center content -->
+    <div class="loader-content">
+        <!-- Animated Lobster Claw -->
+        <div class="loader-logo">
+            <svg viewBox="0 0 120 120" width="120" height="120" class="claw-svg">
+                <!-- Outer glow ring -->
+                <circle cx="60" cy="60" r="54" fill="none" stroke="url(#glowGrad)" stroke-width="2" class="glow-ring"/>
+                <!-- Spinning arc 1 -->
+                <circle cx="60" cy="60" r="48" fill="none" stroke="url(#arcGrad1)" stroke-width="3" stroke-dasharray="80 220" stroke-linecap="round" class="arc arc1"/>
+                <!-- Spinning arc 2 -->
+                <circle cx="60" cy="60" r="42" fill="none" stroke="url(#arcGrad2)" stroke-width="3" stroke-dasharray="60 200" stroke-linecap="round" class="arc arc2"/>
+                <!-- Center lobster emoji -->
+                <text x="60" y="68" text-anchor="middle" font-size="40" class="lobster-emoji">🦞</text>
+                <defs>
+                    <linearGradient id="glowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff6b52"/>
+                        <stop offset="50%" stop-color="#FFE600"/>
+                        <stop offset="100%" stop-color="#ff6b52"/>
+                    </linearGradient>
+                    <linearGradient id="arcGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#ff6b52"/>
+                        <stop offset="100%" stop-color="#FFE600"/>
+                    </linearGradient>
+                    <linearGradient id="arcGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#00FF41"/>
+                        <stop offset="100%" stop-color="#ff6b52"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <!-- Title with shimmer -->
+        <h2 class="loader-title">
+            <span class="shimmer-text">OpenClaw</span>
+        </h2>
+        <p class="loader-subtitle" id="loaderSubtitle"></p>
+
+        <!-- Progress bar -->
+        <div class="loader-progress-track">
+            <div class="loader-progress-bar" id="loaderProgressBar"></div>
+            <div class="loader-progress-glow"></div>
+        </div>
+        <p class="loader-percent" id="loaderPercent">0%</p>
+    </div>
+</div>
+
+<style>
+    #loadingOverlay {
+        position: fixed; inset: 0; z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(ellipse at center, #1a0a08 0%, #0a0505 50%, #000 100%);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
+    #loadingOverlay.fade-out { opacity: 0; pointer-events: none; }
+
+    #loadingParticles {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+
+    .loader-content {
+        position: relative; z-index: 2;
+        display: flex; flex-direction: column; align-items: center;
+        gap: 4px;
+    }
+
+    /* Lobster logo */
+    .loader-logo {
+        position: relative;
+        width: 120px; height: 120px;
+        margin-bottom: 16px;
+        animation: float 3s ease-in-out infinite;
+    }
+    .lobster-emoji {
+        filter: drop-shadow(0 0 12px rgba(255,107,82,0.6));
+    }
+    .glow-ring {
+        animation: pulseRing 2s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px rgba(255,107,82,0.4));
+    }
+    .arc.arc1 { animation: spin 2.5s linear infinite; transform-origin: 60px 60px; }
+    .arc.arc2 { animation: spinReverse 3s linear infinite; transform-origin: 60px 60px; }
+
+    /* Title shimmer */
+    .loader-title {
+        font-size: 36px; font-weight: 900; letter-spacing: 4px;
+        margin: 0; line-height: 1;
+    }
+    .shimmer-text {
+        background: linear-gradient(90deg, #ff6b52 0%, #FFE600 25%, #ff6b52 50%, #00FF41 75%, #ff6b52 100%);
+        background-size: 300% 100%;
+        -webkit-background-clip: text; background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: shimmer 3s linear infinite;
+    }
+
+    /* Subtitle typewriter */
+    .loader-subtitle {
+        color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 500;
+        margin: 8px 0 24px 0; height: 20px; letter-spacing: 1px;
+    }
+
+    /* Progress bar */
+    .loader-progress-track {
+        position: relative; width: 240px; height: 4px;
+        background: rgba(255,255,255,0.08); border-radius: 4px;
+        overflow: hidden;
+    }
+    .loader-progress-bar {
+        height: 100%; width: 0%; border-radius: 4px;
+        background: linear-gradient(90deg, #ff6b52, #FFE600, #00FF41);
+        transition: width 0.3s ease;
+        box-shadow: 0 0 12px rgba(255,107,82,0.6);
+    }
+    .loader-progress-glow {
+        position: absolute; top: -6px; bottom: -6px; left: 0; right: 0;
+        background: linear-gradient(90deg, transparent, rgba(255,230,0,0.15), transparent);
+        animation: progressGlow 2s ease-in-out infinite;
+    }
+    .loader-percent {
+        color: rgba(255,255,255,0.35); font-size: 12px; font-weight: 700;
+        margin-top: 8px; letter-spacing: 2px; font-variant-numeric: tabular-nums;
+    }
+
+    /* Keyframes */
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spinReverse { to { transform: rotate(-360deg); } }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+    @keyframes pulseRing {
+        0%, 100% { opacity: 0.4; r: 54; }
+        50% { opacity: 1; r: 56; }
+    }
+    @keyframes shimmer {
+        0% { background-position: 100% 0; }
+        100% { background-position: -200% 0; }
+    }
+    @keyframes progressGlow {
+        0%, 100% { opacity: 0; }
+        50% { opacity: 1; }
+    }
+</style>
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
 <main class="flex-1 w-full">
@@ -48,7 +197,7 @@
         <div class="relative min-h-screen flex items-center justify-center overflow-hidden w-full m-0 p-0">
             <!-- Immersive Background -->
             <div class="absolute inset-0 z-0 bg-black"> <!-- Added black behind the image in case of loading or aspect ratio issues -->
-                <img src="./banner.png" alt="Game Map Scene" class="w-full h-full object-cover">
+                <img id="heroBanner" src="./banner.png" alt="Game Map Scene" class="w-full h-full object-cover" style="opacity:0;transition:opacity 0.5s ease;">
                 <!-- Removed the full-screen dark overlay to let the map shine -->
             </div>
 
@@ -351,5 +500,155 @@
             }
         });
     });
+</script>
+<script>
+    // ---------- Epic Loading Overlay ----------
+    (function() {
+        const overlay = document.getElementById('loadingOverlay');
+        const banner = document.getElementById('heroBanner');
+        const canvas = document.getElementById('loadingParticles');
+        const ctx = canvas.getContext('2d');
+        const progressBar = document.getElementById('loaderProgressBar');
+        const percentEl = document.getElementById('loaderPercent');
+        const subtitleEl = document.getElementById('loaderSubtitle');
+        const MAX_WAIT = 15000;
+
+        // --- Particles ---
+        let particles = [];
+        let animId;
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const COLORS = ['#ff6b52', '#FFE600', '#00FF41', '#ff3d00', '#ffab40'];
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: canvas.height + 10,
+                size: Math.random() * 3 + 1,
+                speedY: -(Math.random() * 1.5 + 0.5),
+                speedX: (Math.random() - 0.5) * 0.8,
+                opacity: Math.random() * 0.6 + 0.2,
+                color: COLORS[Math.floor(Math.random() * COLORS.length)],
+                life: 0,
+                maxLife: Math.random() * 200 + 100,
+            };
+        }
+        for (let i = 0; i < 60; i++) {
+            const p = createParticle();
+            p.y = Math.random() * canvas.height;
+            p.life = Math.random() * p.maxLife;
+            particles.push(p);
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.life++;
+                const fadeRatio = 1 - p.life / p.maxLife;
+                const alpha = p.opacity * Math.max(0, fadeRatio);
+                if (p.life >= p.maxLife || alpha <= 0) {
+                    particles[i] = createParticle();
+                    continue;
+                }
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.globalAlpha = alpha;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = p.color;
+                ctx.fill();
+            }
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+            animId = requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // --- Typewriter ---
+        const messages = [
+            '正在召唤小龙虾...',
+            '准备桌面冒险地图...',
+            '打磨像素世界...',
+            '小龙虾正在热身...',
+            '加载中，马上就好...',
+        ];
+        let msgIndex = 0, charIndex = 0, deleting = false;
+        function typewrite() {
+            const current = messages[msgIndex];
+            if (!deleting) {
+                subtitleEl.textContent = current.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex >= current.length) {
+                    setTimeout(() => { deleting = true; typewrite(); }, 1200);
+                    return;
+                }
+                setTimeout(typewrite, 80);
+            } else {
+                subtitleEl.textContent = current.substring(0, charIndex);
+                charIndex--;
+                if (charIndex < 0) {
+                    deleting = false;
+                    charIndex = 0;
+                    msgIndex = (msgIndex + 1) % messages.length;
+                    setTimeout(typewrite, 300);
+                    return;
+                }
+                setTimeout(typewrite, 40);
+            }
+        }
+        typewrite();
+
+        // --- Smooth progress bar ---
+        let progress = 0;
+        let targetProgress = 0;
+        let imageLoaded = false;
+
+        function updateProgress() {
+            if (!imageLoaded) {
+                // Simulate progress: fast at start, slow down approaching 90%
+                if (targetProgress < 90) {
+                    targetProgress += (90 - targetProgress) * 0.02;
+                }
+            } else {
+                targetProgress = 100;
+            }
+            progress += (targetProgress - progress) * 0.15;
+            const pct = Math.min(Math.round(progress), 100);
+            progressBar.style.width = pct + '%';
+            percentEl.textContent = pct + '%';
+
+            if (pct >= 100) {
+                setTimeout(hideOverlay, 300);
+                return;
+            }
+            requestAnimationFrame(updateProgress);
+        }
+        requestAnimationFrame(updateProgress);
+
+        // --- Hide overlay ---
+        function hideOverlay() {
+            if (overlay._hidden) return;
+            overlay._hidden = true;
+            banner.style.opacity = '1';
+            overlay.classList.add('fade-out');
+            cancelAnimationFrame(animId);
+            setTimeout(() => overlay.remove(), 900);
+        }
+
+        if (banner.complete && banner.naturalWidth > 0) {
+            imageLoaded = true;
+        } else {
+            banner.addEventListener('load', () => { imageLoaded = true; });
+            banner.addEventListener('error', () => { imageLoaded = true; });
+            setTimeout(() => { imageLoaded = true; }, MAX_WAIT);
+        }
+    })();
 </script>
 </body></html>
