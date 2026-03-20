@@ -1,0 +1,9 @@
+# 安装包文件（通过 GitHub Releases 发布）
+downloads/
+
+# Node
+node_modules/
+server/subscribers.db
+
+# OS
+.DS_Store
