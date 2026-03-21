@@ -1,0 +1,6 @@
+# OpenClaw桌面龙虾 - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lobster.pet/sitemap.xml
