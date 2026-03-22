@@ -361,13 +361,49 @@
 <div class="layout-container flex h-full grow flex-col">
 <main class="flex-1 w-full">
 <div class="w-full flex flex-col flex-1">
-        <!-- Waitlist Button (Fixed Top Right) -->
-        <div class="fixed top-6 right-6 md:top-8 md:right-8 z-50 pointer-events-auto">
-            <button id="openWaitlistBtn" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-6 bg-primary-coral hover:bg-primary text-white font-bold shadow-[0_4px_0_0_#d12c0b] active:translate-y-[2px] active:shadow-none transition-all border-2 border-[rgba(255,255,255,0.2)]">
-                <span class="material-symbols-outlined mr-2 text-xl">notifications_active</span>
-                <span class="truncate text-base tracking-wide">加入预约</span>
-            </button>
-        </div>
+        <!-- Top Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-50 pointer-events-auto" id="topNav">
+            <div class="mx-auto max-w-7xl px-4 md:px-8">
+                <div class="flex items-center justify-between h-16 md:h-18">
+                    <!-- Brand Logo -->
+                    <a href="#" class="flex items-center gap-2.5 group pointer-events-auto" aria-label="OpenClaw 桌面龙虾 首页">
+                        <span class="text-white font-black text-lg tracking-tight [text-shadow:0_2px_8px_rgba(0,0,0,0.8)]">OpenClaw</span>
+                    </a>
+
+                    <!-- Waitlist Button -->
+                    <button id="openWaitlistBtn" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-11 px-5 bg-primary-coral hover:bg-primary text-white font-bold shadow-[0_4px_0_0_#d12c0b] active:translate-y-[2px] active:shadow-none transition-all border-2 border-[rgba(255,255,255,0.2)]">
+                        <span class="material-symbols-outlined mr-1.5 text-lg">notifications_active</span>
+                        <span class="truncate text-sm tracking-wide">加入预约</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <style>
+            #topNav {
+                background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 100%);
+                backdrop-filter: none;
+                transition: background 0.3s ease, box-shadow 0.3s ease;
+            }
+            #topNav.scrolled {
+                background: rgba(12, 6, 5, 0.85);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                box-shadow: 0 1px 0 rgba(255,255,255,0.06);
+            }
+        </style>
+
+        <script>
+            // Add scrolled class to nav when page is scrolled
+            window.addEventListener('scroll', function() {
+                const nav = document.getElementById('topNav');
+                if (window.scrollY > 20) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            }, { passive: true });
+        </script>
 
         <!-- Hero Section -->
         <div class="relative min-h-screen flex items-center justify-center overflow-hidden w-full m-0 p-0">
@@ -481,6 +517,194 @@
   </div>
 </section>
 
+<!-- ========== Brand Credibility Section ========== -->
+<section class="max-w-6xl mx-auto px-4 md:px-8 mt-20 mb-16" id="credibility">
+  <!-- Section Title -->
+  <div class="text-center mb-14">
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">海外名校团队，打造极致桌面体验</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto">核心团队成员来自全球顶尖学府，深耕游戏交互与 AI 技术领域。</p>
+  </div>
+
+  <!-- University Badges -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-16">
+    <!-- Harvard -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-5 md:p-6 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-4px] transition-all group flex flex-col items-center text-center gap-3 cursor-default">
+      <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform shadow-sm overflow-hidden">
+        <!-- Harvard Shield SVG -->
+        <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" fill="#A51C30"/>
+          <!-- Shield shape -->
+          <path d="M32 6 L54 14 L54 34 Q54 50 32 58 Q10 50 10 34 L10 14 Z" fill="#8B1528" stroke="#C9A227" stroke-width="1.5"/>
+          <!-- Three open books -->
+          <text x="32" y="24" text-anchor="middle" fill="#C9A227" font-size="8" font-family="Georgia,serif" font-weight="bold">VE-RI-TAS</text>
+          <rect x="16" y="27" width="10" height="8" rx="1" fill="none" stroke="#C9A227" stroke-width="1.2"/>
+          <rect x="27" y="27" width="10" height="8" rx="1" fill="none" stroke="#C9A227" stroke-width="1.2"/>
+          <rect x="38" y="27" width="10" height="8" rx="1" fill="none" stroke="#C9A227" stroke-width="1.2"/>
+          <line x1="21" y1="27" x2="21" y2="35" stroke="#C9A227" stroke-width="0.8"/>
+          <line x1="32" y1="27" x2="32" y2="35" stroke="#C9A227" stroke-width="0.8"/>
+          <line x1="43" y1="27" x2="43" y2="35" stroke="#C9A227" stroke-width="0.8"/>
+          <!-- Bottom banner -->
+          <rect x="14" y="40" width="36" height="10" rx="2" fill="#C9A227"/>
+          <text x="32" y="48" text-anchor="middle" fill="#A51C30" font-size="6" font-family="Georgia,serif" font-weight="bold">HARVARD</text>
+          <!-- Laurel border hint -->
+          <circle cx="32" cy="32" r="30" fill="none" stroke="#C9A227" stroke-width="0.8" stroke-dasharray="3,2"/>
+        </svg>
+      </div>
+      <div>
+        <p class="text-slate-900 dark:text-white font-bold text-base">哈佛大学</p>
+        <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Harvard University</p>
+      </div>
+    </div>
+
+    <!-- MIT -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-5 md:p-6 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-4px] transition-all group flex flex-col items-center text-center gap-3 cursor-default">
+      <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform shadow-sm overflow-hidden">
+        <!-- MIT Logo SVG -->
+        <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" fill="#fff"/>
+          <!-- MIT red/grey bar logo style: M=2 red bars, I=1 grey bar, T=2 red bars -->
+          <rect x="6"  y="16" width="9" height="28" fill="#A31F34"/>
+          <rect x="18" y="16" width="9" height="28" fill="#A31F34"/>
+          <rect x="24" y="16" width="9" height="10" fill="#fff"/>
+          <rect x="30" y="16" width="9" height="28" fill="#8A8B8C"/>
+          <rect x="42" y="16" width="9" height="28" fill="#A31F34"/>
+          <rect x="54" y="16" width="9" height="28" fill="#A31F34"/>
+          <!-- MIT label -->
+          <text x="32" y="56" text-anchor="middle" fill="#A31F34" font-size="9" font-family="Arial Black,Arial,sans-serif" font-weight="900" letter-spacing="3">MIT</text>
+        </svg>
+      </div>
+      <div>
+        <p class="text-slate-900 dark:text-white font-bold text-base">麻省理工学院</p>
+        <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">MIT</p>
+      </div>
+    </div>
+
+    <!-- Tsinghua -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-5 md:p-6 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-4px] transition-all group flex flex-col items-center text-center gap-3 cursor-default">
+      <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform shadow-sm overflow-hidden">
+        <!-- Tsinghua Seal SVG -->
+        <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" fill="#fff"/>
+          <!-- Outer circle -->
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#660874" stroke-width="2"/>
+          <circle cx="32" cy="32" r="24" fill="none" stroke="#660874" stroke-width="0.8"/>
+          <!-- Arch text top -->
+          <path id="tsinghua-top-arc" d="M 10 32 A 22 22 0 0 1 54 32" fill="none"/>
+          <text font-size="6.5" fill="#660874" font-family="serif" font-weight="bold">
+            <textPath href="#tsinghua-top-arc" startOffset="10%">清华大学  1911</textPath>
+          </text>
+          <!-- Center emblem: stylized gate (清华门) -->
+          <rect x="24" y="30" width="16" height="12" rx="1" fill="none" stroke="#660874" stroke-width="1.5"/>
+          <rect x="28" y="33" width="4" height="9" rx="0.5" fill="#660874"/>
+          <rect x="34" y="33" width="4" height="9" rx="0.5" fill="#660874"/>
+          <line x1="20" y1="30" x2="44" y2="30" stroke="#660874" stroke-width="2"/>
+          <rect x="22" y="26" width="20" height="4" rx="1" fill="none" stroke="#660874" stroke-width="1.2"/>
+          <!-- Bottom text -->
+          <text x="32" y="57" text-anchor="middle" fill="#660874" font-size="5.5" font-family="serif">TSINGHUA UNIV.</text>
+        </svg>
+      </div>
+      <div>
+        <p class="text-slate-900 dark:text-white font-bold text-base">清华大学</p>
+        <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Tsinghua University</p>
+      </div>
+    </div>
+
+    <!-- Stanford -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-5 md:p-6 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-4px] transition-all group flex flex-col items-center text-center gap-3 cursor-default">
+      <div class="w-16 h-16 rounded-xl flex items-center justify-center bg-white group-hover:scale-110 transition-transform shadow-sm overflow-hidden">
+        <!-- Stanford Seal SVG -->
+        <svg viewBox="0 0 64 64" width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" fill="#fff"/>
+          <!-- Outer seal circle -->
+          <circle cx="32" cy="32" r="29" fill="none" stroke="#8C1515" stroke-width="2"/>
+          <circle cx="32" cy="32" r="24" fill="none" stroke="#8C1515" stroke-width="0.8"/>
+          <!-- Arch text -->
+          <path id="stanford-top-arc" d="M 10 32 A 22 22 0 0 1 54 32" fill="none"/>
+          <text font-size="6" fill="#8C1515" font-family="serif" font-weight="bold">
+            <textPath href="#stanford-top-arc" startOffset="5%">STANFORD UNIVERSITY</textPath>
+          </text>
+          <!-- Leland Stanford Junior Univ. founding year -->
+          <text x="32" y="56" text-anchor="middle" fill="#8C1515" font-size="5.5" font-family="serif">FOUNDED 1891</text>
+          <!-- Center: Sequoia tree (simplified) -->
+          <line x1="32" y1="44" x2="32" y2="26" stroke="#8C1515" stroke-width="2"/>
+          <polygon points="32,18 26,28 38,28" fill="#8C1515"/>
+          <polygon points="32,24 24,33 40,33" fill="#8C1515"/>
+          <polygon points="32,30 22,40 42,40" fill="#8C1515"/>
+          <rect x="29" y="44" width="6" height="4" fill="#8C1515"/>
+        </svg>
+      </div>
+      <div>
+        <p class="text-slate-900 dark:text-white font-bold text-base">斯坦福大学</p>
+        <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Stanford University</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tech Companies Sub-section -->
+  <div class="text-center mb-10">
+    <h3 class="text-slate-900 dark:text-white text-2xl md:text-3xl font-black leading-tight tracking-tight mb-3">顶尖科技公司技术生态</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-base font-medium max-w-2xl mx-auto">团队核心成员拥有全球一线科技公司工作经验，技术实力雄厚。</p>
+  </div>
+
+  <!-- Tech Company Logos -->
+  <div class="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-5">
+    <!-- Google -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Google</p>
+    </div>
+
+    <!-- Apple -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-gray-100 dark:bg-gray-800/40 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" class="text-slate-800 dark:text-slate-200"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Apple</p>
+    </div>
+
+    <!-- Microsoft -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 24 24" width="20" height="20"><rect x="1" y="1" width="10" height="10" fill="#F25022"/><rect x="13" y="1" width="10" height="10" fill="#7FBA00"/><rect x="1" y="13" width="10" height="10" fill="#00A4EF"/><rect x="13" y="13" width="10" height="10" fill="#FFB900"/></svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Microsoft</p>
+    </div>
+
+    <!-- Meta -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 40 40" width="24" height="24">
+          <defs><linearGradient id="metaGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0081FB"/><stop offset="50%" stop-color="#A033FF"/><stop offset="100%" stop-color="#FF7847"/></linearGradient></defs>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="url(#metaGrad)" font-weight="900" font-size="22" font-family="sans-serif">M</text>
+        </svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Meta</p>
+    </div>
+
+    <!-- Amazon -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-orange-50 dark:bg-orange-900/20 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 24 24" width="24" height="24"><path d="M.045 18.02c.07-.116.196-.057.271-.004a20.1 20.1 0 0 0 6.28 3.166c2.56.876 5.24 1.16 7.95.79a18.5 18.5 0 0 0 5.05-1.56c.157-.075.282-.155.42-.225.194-.1.353.055.265.234-.455.919-1.7 2.09-3.47 2.91a14.36 14.36 0 0 1-6.41 1.28 16.4 16.4 0 0 1-7.12-1.81c-1.17-.63-2.28-1.41-3.13-2.33-.16-.17-.25-.38-.11-.45z" fill="#FF9900"/><path d="M21.54 16.58c-.19-.24-.85-.29-1.93-.15a6.3 6.3 0 0 0-1.87.43c-.16.07-.13.17.04.16.62-.07 2-.22 2.24.07.25.29-.28 1.5-.51 2.04-.07.16.07.22.22.1.94-.73 1.27-1.28 1.41-1.59.14-.31.27-1.17-.06-1.51-.29.41.19-.05.46.45z" fill="#FF9900"/><path d="M14.68 13.35c0-.83.02-1.52-.4-2.26-.34-.6-.88-.97-1.48-.97-.82 0-1.3.63-1.3 1.55 0 1.83 1.64 2.16 3.18 2.16v-.48zm3.6 4.36a.75.75 0 0 1-.85.08c-1.19-.99-1.41-1.45-2.06-2.39-1.97 2.01-3.37 2.61-5.92 2.61-3.02 0-5.38-1.87-5.38-5.6 0-2.92 1.58-4.9 3.84-5.87 1.95-.86 4.68-1.01 6.77-1.25v-.47c0-.86.07-1.87-.44-2.61-.44-.66-1.29-.94-2.04-.94-1.39 0-2.63.71-2.93 2.19-.06.33-.3.65-.63.67l-3.52-.38c-.3-.07-.63-.3-.54-.75C5.48 1.06 8.58 0 11.35 0c1.42 0 3.27.38 4.39 1.45 1.42 1.32 1.28 3.09 1.28 5.01v4.54c0 1.36.57 1.96 1.1 2.7.19.26.23.57 0 .76-.57.48-1.6 1.37-2.16 1.87l-.08-.02z" fill="#232F3E"/></svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">Amazon</p>
+    </div>
+
+    <!-- ByteDance -->
+    <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-xl p-4 border border-white/30 dark:border-slate-700 shadow-sm hover:shadow-lg hover:translate-y-[-3px] transition-all group flex flex-col items-center text-center gap-2.5 cursor-default">
+      <div class="w-11 h-11 rounded-lg flex items-center justify-center bg-slate-100 dark:bg-slate-700/40 group-hover:scale-110 transition-transform">
+        <svg viewBox="0 0 40 40" width="24" height="24">
+          <defs><linearGradient id="bdGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00F0FF"/><stop offset="100%" stop-color="#325EFF"/></linearGradient></defs>
+          <rect rx="8" width="40" height="40" fill="#000"/>
+          <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="url(#bdGrad)" font-weight="900" font-size="18" font-family="sans-serif">字节</text>
+        </svg>
+      </div>
+      <p class="text-slate-700 dark:text-slate-300 font-bold text-sm">ByteDance</p>
+    </div>
+  </div>
+</section>
+
 <!-- ========== FAQ Section (visible, matches JSON-LD FAQPage) ========== -->
 <section class="max-w-5xl mx-auto px-4 md:px-8 mb-20" id="faq">
   <div class="text-center mb-10">
@@ -566,9 +790,11 @@
 </main>
 <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-6 md:px-20 lg:px-40 py-12">
 <div class="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex items-center gap-3 text-primary opacity-60 grayscale hover:grayscale-0 transition-all">
-<span class="material-symbols-outlined text-3xl">pets</span>
-<span class="text-lg font-bold">OpenClaw桌面龙虾</span>
+<div class="flex items-center gap-3 opacity-60 hover:opacity-100 transition-all group">
+<div class="w-9 h-9 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 group-hover:scale-105 transition-transform">
+    <img src="./logo.png" alt="OpenClaw Logo" class="w-full h-full object-cover" width="36" height="36" loading="lazy">
+</div>
+<span class="text-lg font-bold text-slate-700 dark:text-slate-300">OpenClaw桌面龙虾</span>
 </div>
 <nav class="flex gap-8 text-sm font-semibold text-slate-500 dark:text-slate-400" aria-label="底部导航">
 <a class="hover:text-primary transition-colors" href="#" rel="nofollow">隐私政策</a>
