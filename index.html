@@ -41,6 +41,14 @@
     s.parentNode.insertBefore(bp, s);
 })();
 </script>
+<!-- Google Analytics 4 (GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VN61840WD9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VN61840WD9');
+</script>
 <!-- SEO: Open Graph -->
 <meta property="og:title" content="OpenClaw桌面龙虾 - 你的专属桌面宠物小龙虾">
 <meta property="og:description" content="免费下载OpenClaw，在桌面养一只赛博小龙虾！像素风养成、趣味互动、技能解锁，支持Mac/Windows。">
@@ -1306,5 +1314,178 @@
             setTimeout(() => { imageLoaded = true; }, MAX_WAIT);
         }
     })();
+</script>
+
+<!-- ========== GA4 自定义埋点事件 ========== -->
+<script>
+(function() {
+    // 工具函数：发送 GA4 事件
+    function trackEvent(eventName, params) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, params || {});
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // =============================================
+        // 1. 按钮点击埋点
+        // =============================================
+
+        // Mac 下载按钮（Hero 区 + CTA 区）
+        ['downloadMacBtn', 'ctaDownloadMacBtn'].forEach(function(id) {
+            var btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    trackEvent('click_download', {
+                        platform: 'mac',
+                        button_location: id.includes('cta') ? 'cta_section' : 'hero_section'
+                    });
+                });
+            }
+        });
+
+        // Windows 下载按钮（Hero 区 + CTA 区）
+        ['downloadWinBtn', 'ctaDownloadWinBtn'].forEach(function(id) {
+            var btn = document.getElementById(id);
+            if (btn) {
+                btn.addEventListener('click', function() {
+                    trackEvent('click_download', {
+                        platform: 'windows',
+                        button_location: id.includes('cta') ? 'cta_section' : 'hero_section'
+                    });
+                });
+            }
+        });
+
+        // 加入预约按钮
+        var waitlistBtn = document.getElementById('openWaitlistBtn');
+        if (waitlistBtn) {
+            waitlistBtn.addEventListener('click', function() {
+                trackEvent('click_waitlist', { button_location: 'nav_bar' });
+            });
+        }
+
+        // 顶部导航链接
+        document.querySelectorAll('#topNav a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function() {
+                trackEvent('click_nav_link', {
+                    link_text: link.textContent.trim(),
+                    link_target: link.getAttribute('href')
+                });
+            });
+        });
+
+        // =============================================
+        // 2. 表单交互埋点
+        // =============================================
+
+        // 弹窗打开
+        var openBtn = document.getElementById('openWaitlistBtn');
+        if (openBtn) {
+            openBtn.addEventListener('click', function() {
+                trackEvent('modal_open', { modal_name: 'waitlist' });
+            });
+        }
+
+        // 弹窗关闭
+        ['closeModalBtn', 'modalBackdrop'].forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('click', function() {
+                    trackEvent('modal_close', { modal_name: 'waitlist', close_method: id === 'closeModalBtn' ? 'button' : 'backdrop' });
+                });
+            }
+        });
+
+        // 邮箱订阅表单
+        var form = document.getElementById('subscribeForm');
+        if (form) {
+            form.addEventListener('submit', function() {
+                trackEvent('form_submit', { form_name: 'email_subscribe' });
+            });
+
+            // 监听订阅结果（通过 MutationObserver 观察反馈元素）
+            var observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(m) {
+                    m.addedNodes.forEach(function(node) {
+                        if (node.id === 'subscribeFeedback') {
+                            var isSuccess = node.classList.contains('bg-emerald-500/20') ||
+                                            node.className.indexOf('emerald') > -1;
+                            trackEvent(isSuccess ? 'form_submit_success' : 'form_submit_fail', {
+                                form_name: 'email_subscribe'
+                            });
+                        }
+                    });
+                });
+            });
+            observer.observe(form, { childList: true });
+        }
+
+        // =============================================
+        // 3. FAQ 展开/折叠埋点
+        // =============================================
+        document.querySelectorAll('#faqAccordion details').forEach(function(detail, index) {
+            detail.addEventListener('toggle', function() {
+                if (detail.open) {
+                    var question = detail.querySelector('summary');
+                    trackEvent('faq_expand', {
+                        faq_index: index + 1,
+                        faq_question: question ? question.textContent.trim().substring(0, 80) : ''
+                    });
+                }
+            });
+        });
+
+        // =============================================
+        // 4. 区块曝光埋点（Intersection Observer）
+        // =============================================
+        var sectionMap = {
+            'features': '功能特色',
+            'stats': '数据统计',
+            'credibility': '团队实力',
+            'compare': '对比表',
+            'faq': '常见问题'
+        };
+        var viewedSections = {};
+
+        var sectionObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting && !viewedSections[entry.target.id]) {
+                    viewedSections[entry.target.id] = true;
+                    trackEvent('section_view', {
+                        section_id: entry.target.id,
+                        section_name: sectionMap[entry.target.id] || entry.target.id
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+
+        Object.keys(sectionMap).forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) sectionObserver.observe(el);
+        });
+
+        // =============================================
+        // 5. 滚动深度埋点（25% / 50% / 75% / 100%）
+        // =============================================
+        var scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+
+        window.addEventListener('scroll', function() {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (docHeight <= 0) return;
+            var percent = Math.round((scrollTop / docHeight) * 100);
+
+            [25, 50, 75, 100].forEach(function(milestone) {
+                if (percent >= milestone && !scrollMilestones[milestone]) {
+                    scrollMilestones[milestone] = true;
+                    trackEvent('scroll_depth', { depth_percent: milestone });
+                }
+            });
+        }, { passive: true });
+
+    });
+})();
 </script>
 </body></html>
