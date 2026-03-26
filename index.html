@@ -990,6 +990,10 @@
     const GITHUB_REPO = 'peter-jim/lobster_landingpage';
     const RELEASE_API = `https://api.github.com/repos/${GITHUB_REPO}/releases/latest`;
     const RELEASE_FALLBACK = `https://github.com/${GITHUB_REPO}/releases/latest`;
+    
+    // 固定的保底版本（当 GitHub API 限制/网络错误时使用，避免跳走）
+    const FALLBACK_VERSION = '1.3.1';
+    const FALLBACK_DOWNLOAD_URL_BASE = `https://github.com/${GITHUB_REPO}/releases/download/v${FALLBACK_VERSION}/Lobster.Pet-${FALLBACK_VERSION}`;
 
     // 缓存最新 release 信息
     let releaseCache = null;
@@ -997,7 +1001,10 @@
     async function fetchLatestRelease() {
         if (releaseCache) return releaseCache;
         try {
-            const resp = await fetch(RELEASE_API);
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3500); // 3.5秒超时，防止网络卡顿
+            const resp = await fetch(RELEASE_API, { signal: controller.signal });
+            clearTimeout(timeoutId);
             if (!resp.ok) throw new Error('API error');
             releaseCache = await resp.json();
             return releaseCache;
@@ -1035,7 +1042,9 @@
             showToast(`🦞 开始下载 Mac ${arch === 'arm64' ? 'Apple Silicon' : 'Intel'} 版 v${release.tag_name}！`);
             window.location.href = asset.browser_download_url;
         } else {
-            window.open(RELEASE_FALLBACK, '_blank');
+            // API 失败时，直接走写死的保底直链，不跳转外跳
+            showToast(`🦞 下载备用版本 v${FALLBACK_VERSION}...`);
+            window.location.href = `${FALLBACK_DOWNLOAD_URL_BASE}-mac-${arch}.dmg`;
         }
     }
 
@@ -1047,7 +1056,9 @@
             showToast(`🦞 开始下载 Windows 版 v${release.tag_name}！`);
             window.location.href = asset.browser_download_url;
         } else {
-            window.open(RELEASE_FALLBACK, '_blank');
+            // API 失败时，直接走写死的保底直链
+            showToast(`🦞 下载备用版本 v${FALLBACK_VERSION}...`);
+            window.location.href = `${FALLBACK_DOWNLOAD_URL_BASE}-win-x64.exe`;
         }
     }
 
