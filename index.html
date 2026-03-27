@@ -409,26 +409,6 @@
         0%, 100% { opacity: 0; }
         50% { opacity: 1; }
     }
-    /* Affiliate banner glow animation */
-    .aff-card {
-        animation: affPulse 3s ease-in-out infinite;
-    }
-    .aff-glow {
-        position: absolute; inset: -2px;
-        background: conic-gradient(from 0deg, #FFE600, #ff6b52, #00FF41, #FFE600);
-        border-radius: inherit;
-        z-index: 0;
-        opacity: 0.15;
-        animation: affRotate 4s linear infinite;
-        filter: blur(8px);
-    }
-    @keyframes affPulse {
-        0%, 100% { box-shadow: 0 8px 32px rgba(255,230,0,0.15); }
-        50% { box-shadow: 0 8px 40px rgba(255,230,0,0.25); }
-    }
-    @keyframes affRotate {
-        to { transform: rotate(360deg); }
-    }
 </style>
 <div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
 <div class="layout-container flex h-full grow flex-col">
@@ -521,27 +501,36 @@
                 </div>
 
                 <!-- Affiliate Invitation Banner (hidden by default, shown when ?aff=xxx is present) -->
-                <div id="affBanner" class="hidden mt-8 pointer-events-auto w-full max-w-md mx-auto">
-                    <div class="aff-card relative bg-zinc-900/90 backdrop-blur-md border-2 border-[#FFE600]/40 rounded-2xl p-5 text-white shadow-[0_8px_32px_rgba(255,230,0,0.15)] overflow-hidden">
-                        <!-- Shimmer border effect -->
-                        <div class="aff-glow"></div>
+                <div id="affBanner" class="hidden mt-8 pointer-events-auto w-full max-w-[420px] mx-auto">
+                    <div class="relative bg-[#1c1c1c]/95 backdrop-blur-md border border-[#FFE600]/20 rounded-2xl p-5 shadow-[0_12px_40px_rgba(0,0,0,0.6)] z-10 text-left overflow-hidden">
+                        <!-- Subtle inner glows matching the screenshot -->
+                        <div class="absolute top-0 right-1/4 w-32 h-32 bg-red-500/15 rounded-full blur-3xl pointer-events-none"></div>
+                        <div class="absolute bottom-0 right-0 w-32 h-32 bg-[#00FF41]/15 rounded-full blur-3xl pointer-events-none"></div>
+
                         <div class="relative z-10">
-                            <div class="flex items-center gap-2 mb-3">
-                                <span class="text-2xl">🎁</span>
-                                <p class="text-[#FFE600] font-bold text-base">你的好友邀请你体验 OpenClaw！</p>
+                            <!-- Title -->
+                            <div class="flex items-center gap-2.5 mb-6">
+                                <span class="text-2xl drop-shadow">🎁</span>
+                                <h3 class="text-[#FFE600] text-[17px] font-bold tracking-wide">你的好友邀请你体验 OpenClaw！</h3>
                             </div>
-                            <div class="flex items-center justify-between bg-black/40 rounded-xl px-4 py-3 border border-white/10">
-                                <div class="flex items-center gap-2">
-                                    <span class="text-white/60 text-sm">专属邀请码:</span>
-                                    <span id="affCodeDisplay" class="text-[#00FF41] font-black text-lg tracking-wider"></span>
+                            
+                            <!-- Invite code wrapper -->
+                            <div class="flex items-center justify-between bg-[#0a0a0a] rounded-full pl-5 pr-2 py-2 mb-5 border border-white/5">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-[#aaa] font-medium text-[15px]">专属邀请码:</span>
+                                    <span id="affCodeDisplay" class="text-[#00FF41] font-bold text-xl tracking-wider relative top-[1px]"></span>
                                 </div>
-                                <button id="copyAffCodeBtn" class="flex items-center gap-1.5 bg-[#FFE600]/20 hover:bg-[#FFE600]/30 text-[#FFE600] px-3 py-1.5 rounded-lg text-sm font-bold transition-all active:scale-95 border border-[#FFE600]/30">
-                                    <span class="material-symbols-outlined text-base" id="copyIcon">content_copy</span>
+                                
+                                <!-- Copy button matching screenshot -->
+                                <button id="copyAffCodeBtn" class="flex items-center gap-1.5 border border-[#FFE600]/60 hover:bg-[#FFE600]/10 text-[#FFE600] px-4 py-1.5 rounded-full text-sm font-bold transition-all active:scale-95">
+                                    <span class="material-symbols-outlined text-[18px]" id="copyIcon">content_copy</span>
                                     <span id="copyText">复制</span>
                                 </button>
                             </div>
-                            <p class="text-white/50 text-xs mt-3 flex items-center gap-1">
-                                <span class="material-symbols-outlined text-sm">info</span>
+                            
+                            <!-- Bottom info -->
+                            <p class="text-[#888] text-[13px] flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-[16px]">info</span>
                                 安装后打开 App，输入邀请码即可获得额外奖励
                             </p>
                         </div>
