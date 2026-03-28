@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "OpenClaw桌面版 - 免费桌面宠物小龙虾养成软件下载 | OpenClaw桌面龙虾",
+    "description": "OpenClaw桌面版（OpenClaw桌面龙虾）是一款免费桌面宠物养成软件，网页版已上线可直接在线体验！在你的电脑桌面养一只可爱的赛博小龙虾，支持Mac和Windows，像素风互动养成、技能解锁、趣味陪伴，立即体验OpenClaw桌面版。",
+    "ogTitle": "OpenClaw桌面版 - 免费下载你的专属桌面宠物小龙虾",
+    "ogDesc": "OpenClaw桌面版网页版已上线，立即在线体验！在桌面养一只赛博小龙虾，像素风养成、趣味互动、技能解锁，支持Mac/Windows。"
+  },
+  "nav": {
+    "features": "功能特色",
+    "stats": "数据统计",
+    "credibility": "团队实力",
+    "faq": "常见问题",
+    "tryNow": "立即体验"
+  },
+  "hero": {
+    "subtitle": "OpenClaw桌面版 · 你的专属桌面龙虾宠物",
+    "desc": "领养你的赛博小龙虾，OpenClaw桌面版带来全新桌面宠物养成体验！网页版已上线，无需下载即可在线体验。趣味互动、技能解锁、像素风冒险。",
+    "downloadMac": "Mac版下载",
+    "downloadWin": "Windows版下载",
+    "macAriaLabel": "下载OpenClaw桌面龙虾Mac版",
+    "winAriaLabel": "下载OpenClaw桌面龙虾Windows版"
+  },
+  "aff": {
+    "title": "你的好友邀请你体验 OpenClaw！",
+    "codeLabel": "专属邀请码:",
+    "copyBtn": "复制",
+    "copiedBtn": "已复制",
+    "tip": "安装后打开 App，输入邀请码即可获得额外奖励"
+  },
+  "features": {
+    "title": "为什么选择 OpenClaw桌面版？",
+    "subtitle": "OpenClaw桌面版——一只有趣、可爱、聪明的赛博小龙虾，让你的桌面从此不再无聊。",
+    "card1Title": "像素风养成",
+    "card1Desc": "精美像素艺术风格的桌面宠物，复古又现代。喂食、玩耍、训练你的小龙虾，看它一天天成长。",
+    "card2Title": "技能解锁",
+    "card2Desc": "随着互动积累经验值，解锁独特的龙虾技能。每只龙虾的成长路线都不一样，打造你的专属桌面伙伴。",
+    "card3Title": "跨平台支持",
+    "card3Desc": "同时支持 macOS 和 Windows 系统，无论你用什么电脑，都能拥有一只桌面小龙虾陪你工作和学习。",
+    "card4Title": "免费下载",
+    "card4Desc": "OpenClaw桌面版免费下载，基础养成功能全部免费体验。需要更强大的 AI 算力？可按需解锁高级功能。"
+  },
+  "stats": {
+    "title": "用数据说话",
+    "subtitle": "OpenClaw桌面龙虾是一款<strong>完全免费</strong>的桌面宠物养成软件，已有超过万名用户选择信赖。",
+    "downloads": "全球用户下载",
+    "skills": "可解锁技能",
+    "compatibility": "系统兼容性",
+    "size": "轻量安装包",
+    "rating": "用户评分"
+  },
+  "credibility": {
+    "title": "海外名校团队，打造极致桌面体验",
+    "subtitle": "核心团队成员来自全球顶尖学府，深耕游戏交互与 AI 技术领域。",
+    "harvard": "哈佛大学",
+    "mit": "麻省理工学院",
+    "tsinghua": "清华大学",
+    "stanford": "斯坦福大学",
+    "techTitle": "顶尖科技公司技术生态",
+    "techSubtitle": "团队核心成员拥有全球一线科技公司工作经验，技术实力雄厚。"
+  },
+  "compare": {
+    "title": "为什么选择 OpenClaw？",
+    "subtitle": "与市面上其他桌面宠物软件相比，OpenClaw 在多个维度领先。",
+    "headerFeature": "功能特性",
+    "headerOC": "OpenClaw 桌面龙虾",
+    "headerOther": "其他桌面宠物",
+    "price": "价格",
+    "priceSelf": "✅ 完全免费",
+    "priceOther": "部分付费",
+    "os": "系统支持",
+    "osSelf": "✅ Windows + Mac",
+    "osOther": "通常单一系统",
+    "skillCount": "技能数量",
+    "skillSelf": "✅ 20+",
+    "skillOther": "5-10",
+    "install": "安装难度",
+    "installSelf": "✅ 一键安装",
+    "installOther": "需要配置",
+    "resource": "资源占用",
+    "resourceSelf": "✅ 低（<100MB内存）",
+    "resourceOther": "较高",
+    "privacy": "隐私保护",
+    "privacySelf": "✅ 本地运行，无上传",
+    "privacyOther": "可能收集数据"
+  },
+  "quote": {
+    "text": "桌面宠物不仅是娱乐工具，更是提升工作效率和情感陪伴的创新方式。我们将最前沿的技术融入到一只小小的桌面龙虾中，让每一次互动都充满惊喜。",
+    "author": "OpenClaw Team",
+    "role": "核心团队 · 海外名校背景 · 10年+开发经验"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "关于 OpenClaw 桌面龙虾，你可能想了解的一切。",
+    "q1": "OpenClaw桌面版是免费的吗？",
+    "a1": "OpenClaw桌面版免费下载，支持Mac和Windows系统。基础的桌面宠物养成功能全部免费，部分高级功能（如AI算力）可根据需要付费解锁。",
+    "q2": "OpenClaw桌面版支持哪些操作系统？",
+    "a2": "OpenClaw桌面版目前支持macOS和Windows两大操作系统。无论你使用苹果电脑还是Windows PC，都可以下载安装OpenClaw桌面版并使用。",
+    "q3": "桌面龙虾有哪些互动功能？",
+    "a3": "OpenClaw桌面版支持丰富的互动功能：像素风养成、喂食、玩耍、训练、技能解锁、桌面冒险等。你的小龙虾会随着互动不断成长，解锁专属技能，成为你独一无二的桌面伙伴。",
+    "q4": "如何下载OpenClaw桌面版？",
+    "a4": "访问官网 lobster.pet 即可免费下载Mac版和Windows版的OpenClaw桌面版。点击页面顶部的下载按钮，选择对应的系统版本即可。",
+    "q5": "桌面龙虾会影响电脑性能吗？",
+    "a5": "资源占用很小。OpenClaw桌面版经过精心优化，运行时内存占用约 100-200MB，不会影响你的正常办公或游戏体验。它会静静地待在你的桌面上，等待你的互动。"
+  },
+  "cta": {
+    "title": "准备好领养你的桌面龙虾了吗？",
+    "subtitle": "OpenClaw桌面版网页版已上线！无需下载，打开浏览器即可在线体验。桌面版 Mac/Windows 同步开发中。",
+    "tryOnline": "🦞 立即在线体验",
+    "desktopDownload": "🖥️ 桌面版下载"
+  },
+  "footer": {
+    "brand": "OpenClaw桌面龙虾",
+    "privacy": "隐私政策",
+    "terms": "用户协议",
+    "contact": "联系我们",
+    "seoText": "OpenClaw桌面版（lobster.pet）又名OpenClaw桌面龙虾，是一款免费桌面宠物养成软件，支持Mac和Windows系统。像素风互动养成、技能解锁、趣味陪伴，立即下载OpenClaw桌面版，在你的电脑桌面养一只可爱的赛博小龙虾。",
+    "copyright": "© 2026 OpenClaw桌面版 (Lobster.pet) · 免费桌面宠物养成软件下载"
+  },
+  "loading": {
+    "msg1": "正在召唤小龙虾...",
+    "msg2": "准备桌面冒险地图...",
+    "msg3": "打磨像素世界...",
+    "msg4": "小龙虾正在热身...",
+    "msg5": "加载中，马上就好..."
+  },
+  "toast": {
+    "fetchingVersion": "🦞 正在获取最新版本...",
+    "downloadMac": "🦞 开始下载 Mac {arch} 版 v{version}！",
+    "downloadFallback": "🦞 下载备用版本 v{version}...",
+    "downloadWin": "🦞 开始下载 Windows 版 v{version}！",
+    "copyFail": "复制失败，请手动复制邀请码: "
+  },
+  "langSwitcher": {
+    "zh-CN": "中文",
+    "en": "English",
+    "ja": "日本語"
+  }
+}

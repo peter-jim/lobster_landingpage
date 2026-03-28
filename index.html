@@ -20,6 +20,8 @@
 <!-- SEO: Hreflang -->
 <link rel="alternate" hreflang="zh-CN" href="https://lobster.pet/">
 <link rel="alternate" hreflang="x-default" href="https://lobster.pet/">
+<link rel="alternate" hreflang="en" href="https://lobster.pet/?lang=en">
+<link rel="alternate" hreflang="ja" href="https://lobster.pet/?lang=ja">
 <!-- Performance: Preconnect -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,6 +196,7 @@
             },
         }
     </script>
+<script src="./i18n.js" defer></script>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
 <!-- SEO: noscript fallback for crawlers (500+ words, Answer-First structure) -->
@@ -236,18 +239,18 @@
 
     <h2>OpenClaw vs 其他桌面宠物对比</h2>
     <table border="1" cellpadding="8" cellspacing="0" style="margin:16px auto;border-collapse:collapse;text-align:center;">
-      <thead><tr><th>功能特性</th><th>OpenClaw桌面龙虾</th><th>其他桌面宠物</th></tr></thead>
+      <thead><tr><th data-i18n="compare.headerFeature">功能特性</th><th>OpenClaw桌面龙虾</th><th data-i18n="compare.headerOther">其他桌面宠物</th></tr></thead>
       <tbody>
-        <tr><td>价格</td><td>完全免费</td><td>部分付费</td></tr>
-        <tr><td>系统支持</td><td>Windows + Mac</td><td>通常仅单一系统</td></tr>
-        <tr><td>技能数量</td><td>20+</td><td>5-10</td></tr>
-        <tr><td>安装难度</td><td>一键安装</td><td>需要配置</td></tr>
-        <tr><td>资源占用</td><td>低（&lt;100MB内存）</td><td>较高</td></tr>
-        <tr><td>隐私保护</td><td>本地运行，无上传</td><td>可能收集数据</td></tr>
+        <tr><td data-i18n="compare.price">价格</td><td>完全免费</td><td data-i18n="compare.priceOther">部分付费</td></tr>
+        <tr><td data-i18n="compare.os">系统支持</td><td>Windows + Mac</td><td>通常仅单一系统</td></tr>
+        <tr><td data-i18n="compare.skillCount">技能数量</td><td>20+</td><td data-i18n="compare.skillOther">5-10</td></tr>
+        <tr><td data-i18n="compare.install">安装难度</td><td>一键安装</td><td data-i18n="compare.installOther">需要配置</td></tr>
+        <tr><td data-i18n="compare.resource">资源占用</td><td>低（&lt;100MB内存）</td><td data-i18n="compare.resourceOther">较高</td></tr>
+        <tr><td data-i18n="compare.privacy">隐私保护</td><td>本地运行，无上传</td><td data-i18n="compare.privacyOther">可能收集数据</td></tr>
       </tbody>
     </table>
 
-    <h2>常见问题</h2>
+    <h2 data-i18n="faq.title">常见问题</h2>
     <h3>OpenClaw桌面龙虾是免费的吗？</h3>
     <p>OpenClaw桌面龙虾完全免费下载，支持Mac和Windows系统。基础的桌面宠物养成功能全部免费使用，部分高级功能（如AI算力）可根据需要付费解锁。</p>
     <h3>支持哪些操作系统？</h3>
@@ -425,16 +428,36 @@
 
                     <!-- Nav Links -->
                     <div class="hidden md:flex items-center gap-6 pointer-events-auto">
-                        <a href="#features" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">功能特色</a>
-                        <a href="#stats" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">数据统计</a>
-                        <a href="#credibility" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">团队实力</a>
-                        <a href="#faq" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">常见问题</a>
+                        <a href="#features" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" data-i18n="nav.features">功能特色</a>
+                        <a href="#stats" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" data-i18n="nav.stats">数据统计</a>
+                        <a href="#credibility" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" data-i18n="nav.credibility">团队实力</a>
+                        <a href="#faq" class="text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]" data-i18n="nav.faq">常见问题</a>
+                    </div>
+
+                    <!-- Language Switcher -->
+                    <div class="relative" id="langSwitcherWrap">
+                        <button id="langSwitcherToggle" class="flex items-center gap-1.5 text-white/70 hover:text-white text-sm font-semibold transition-colors [text-shadow:0_1px_4px_rgba(0,0,0,0.6)] px-2 py-1.5 rounded-lg hover:bg-white/10" aria-label="Switch language">
+                            <span class="material-symbols-outlined text-base">language</span>
+                            <span id="langCurrentLabel">中文</span>
+                            <span class="material-symbols-outlined text-sm">expand_more</span>
+                        </button>
+                        <div id="langDropdown" class="hidden opacity-0 scale-95 transition-all duration-200 absolute right-0 top-full mt-2 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-200 dark:border-slate-700 py-1.5 min-w-[140px] z-[60]">
+                            <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center gap-2.5 text-slate-600 dark:text-slate-300" data-lang="zh-CN">
+                                <span class="text-base">🇨🇳</span> 中文
+                            </button>
+                            <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center gap-2.5 text-slate-600 dark:text-slate-300" data-lang="en">
+                                <span class="text-base">🇺🇸</span> English
+                            </button>
+                            <button class="lang-option w-full text-left px-4 py-2.5 text-sm hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center gap-2.5 text-slate-600 dark:text-slate-300" data-lang="ja">
+                                <span class="text-base">🇯🇵</span> 日本語
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Try Now Button -->
                     <a href="https://app.lobster.pet/" target="_blank" rel="noopener" class="flex min-w-[120px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-11 px-5 bg-primary-coral hover:bg-primary text-white font-bold shadow-[0_4px_0_0_#d12c0b] active:translate-y-[2px] active:shadow-none transition-all border-2 border-[rgba(255,255,255,0.2)] no-underline">
                         <span class="material-symbols-outlined mr-1.5 text-lg">play_arrow</span>
-                        <span class="truncate text-sm tracking-wide">立即体验</span>
+                        <span class="truncate text-sm tracking-wide" data-i18n="nav.tryNow">立即体验</span>
                     </a>
                 </div>
             </div>
@@ -480,23 +503,23 @@
                 
                 <!-- Main Title -->
                 <h1 class="text-[#FFE600] text-6xl md:text-8xl font-black leading-tight tracking-tight mb-6 [text-shadow:-2px_-2px_0_#000,2px_-2px_0_#000,-2px_2px_0_#000,2px_2px_0_#000,0_4px_24px_rgba(0,0,0,1),0_0_40px_rgba(0,0,0,0.8)] [paint-order:stroke_fill] md:whitespace-nowrap">
-                    OpenClaw <br class="md:hidden"/><span class="text-[#00FF41] xl:text-5xl text-3xl block mt-4 drop-shadow-lg">OpenClaw桌面版 · 你的专属桌面龙虾宠物</span>
+                    OpenClaw <br class="md:hidden"/><span class="text-[#00FF41] xl:text-5xl text-3xl block mt-4 drop-shadow-lg" data-i18n="hero.subtitle">OpenClaw桌面版 · 你的专属桌面龙虾宠物</span>
                 </h1>
 
                 <!-- Subtitle -->
                 <p class="text-white text-lg md:text-2xl font-bold leading-normal max-w-2xl mx-auto mb-12 [text-shadow:-1px_-1px_0_#000,1px_-1px_0_#000,-1px_1px_0_#000,1px_1px_0_#000,0_4px_16px_rgba(0,0,0,1),0_0_24px_rgba(0,0,0,0.8)]">
-                    领养你的赛博小龙虾，OpenClaw桌面版带来全新桌面宠物养成体验！网页版已上线，无需下载即可在线体验。趣味互动、技能解锁、像素风冒险。
+                    <span data-i18n="hero.desc">领养你的赛博小龙虾，OpenClaw桌面版带来全新桌面宠物养成体验！网页版已上线，无需下载即可在线体验。趣味互动、技能解锁、像素风冒险。</span>
                 </p>
 
                 <div class="flex flex-wrap justify-center gap-6 pointer-events-auto">
                     <!-- Styled buttons to look more like game UI elements (thicker borders, distinct shadows) -->
-                    <button id="downloadMacBtn" aria-label="下载OpenClaw桌面龙虾Mac版" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-zinc-900 border-2 border-zinc-700 text-white text-lg font-bold shadow-[0_4px_0_0_#3f3f46] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#3f3f46] active:translate-y-[2px] active:shadow-none transition-all">
+                    <button id="downloadMacBtn" aria-label="下载OpenClaw桌面龙虾Mac版" data-i18n-aria="hero.macAriaLabel" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-zinc-900 border-2 border-zinc-700 text-white text-lg font-bold shadow-[0_4px_0_0_#3f3f46] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#3f3f46] active:translate-y-[2px] active:shadow-none transition-all">
                         <span class="material-symbols-outlined text-2xl">desktop_mac</span>
-                        Mac版下载
+                        <span data-i18n="hero.downloadMac">Mac版下载</span>
                     </button>
-                    <button id="downloadWinBtn" aria-label="下载OpenClaw桌面龙虾Windows版" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-primary border-2 border-primary-coral text-white text-lg font-bold shadow-[0_4px_0_0_#991b1b] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#991b1b] active:translate-y-[2px] active:shadow-none transition-all">
+                    <button id="downloadWinBtn" aria-label="下载OpenClaw桌面龙虾Windows版" data-i18n-aria="hero.winAriaLabel" class="flex min-w-[220px] items-center justify-center gap-3 rounded-xl h-14 px-8 bg-primary border-2 border-primary-coral text-white text-lg font-bold shadow-[0_4px_0_0_#991b1b] hover:translate-y-[-2px] hover:shadow-[0_6px_0_0_#991b1b] active:translate-y-[2px] active:shadow-none transition-all">
                         <span class="material-symbols-outlined text-2xl">terminal</span>
-                        Windows版下载
+                        <span data-i18n="hero.downloadWin">Windows版下载</span>
                     </button>
                 </div>
 
@@ -511,27 +534,27 @@
                             <!-- Title -->
                             <div class="flex items-center gap-2.5 mb-6">
                                 <span class="text-2xl drop-shadow">🎁</span>
-                                <h3 class="text-[#FFE600] text-[17px] font-bold tracking-wide">你的好友邀请你体验 OpenClaw！</h3>
+                                <h3 class="text-[#FFE600] text-[17px] font-bold tracking-wide" data-i18n="aff.title">你的好友邀请你体验 OpenClaw！</h3>
                             </div>
                             
                             <!-- Invite code wrapper -->
                             <div class="flex items-center justify-between bg-[#0a0a0a] rounded-full pl-5 pr-2 py-2 mb-5 border border-white/5">
                                 <div class="flex items-baseline gap-2">
-                                    <span class="text-[#aaa] font-medium text-[15px]">专属邀请码:</span>
+                                    <span class="text-[#aaa] font-medium text-[15px]" data-i18n="aff.codeLabel">专属邀请码:</span>
                                     <span id="affCodeDisplay" class="text-[#00FF41] font-bold text-xl tracking-wider relative top-[1px]"></span>
                                 </div>
                                 
                                 <!-- Copy button matching screenshot -->
                                 <button id="copyAffCodeBtn" class="flex items-center gap-1.5 border border-[#FFE600]/60 hover:bg-[#FFE600]/10 text-[#FFE600] px-4 py-1.5 rounded-full text-sm font-bold transition-all active:scale-95">
                                     <span class="material-symbols-outlined text-[18px]" id="copyIcon">content_copy</span>
-                                    <span id="copyText">复制</span>
+                                    <span id="copyText" data-i18n="aff.copyBtn">复制</span>
                                 </button>
                             </div>
                             
                             <!-- Bottom info -->
                             <p class="text-[#888] text-[13px] flex items-center gap-1.5">
                                 <span class="material-symbols-outlined text-[16px]">info</span>
-                                安装后打开 App，输入邀请码即可获得额外奖励
+                                <span data-i18n="aff.tip">安装后打开 App，输入邀请码即可获得额外奖励</span>
                             </p>
                         </div>
                     </div>
@@ -544,8 +567,8 @@
 <!-- ========== Features Section ========== -->
 <section class="max-w-6xl mx-auto px-4 md:px-8 mt-20 mb-16" id="features">
   <div class="text-center mb-14">
-    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">为什么选择 OpenClaw桌面版？</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto">OpenClaw桌面版——一只有趣、可爱、聪明的赛博小龙虾，让你的桌面从此不再无聊。</p>
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4" data-i18n="features.title">为什么选择 OpenClaw桌面版？</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto" data-i18n="features.subtitle">OpenClaw桌面版——一只有趣、可爱、聪明的赛博小龙虾，让你的桌面从此不再无聊。</p>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -554,8 +577,8 @@
       <div class="w-14 h-14 bg-mint rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl text-emerald-600">auto_fix_high</span>
       </div>
-      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2">像素风养成</h3>
-      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">精美像素艺术风格的桌面宠物，复古又现代。喂食、玩耍、训练你的小龙虾，看它一天天成长。</p>
+      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2" data-i18n="features.card1Title">像素风养成</h3>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed" data-i18n="features.card1Desc">精美像素艺术风格的桌面宠物，复古又现代。喂食、玩耍、训练你的小龙虾，看它一天天成长。</p>
     </article>
 
     <!-- Feature Card 2 -->
@@ -563,8 +586,8 @@
       <div class="w-14 h-14 bg-lavender rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl text-indigo-600">emoji_events</span>
       </div>
-      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2">技能解锁</h3>
-      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">随着互动积累经验值，解锁独特的龙虾技能。每只龙虾的成长路线都不一样，打造你的专属桌面伙伴。</p>
+      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2" data-i18n="features.card2Title">技能解锁</h3>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed" data-i18n="features.card2Desc">随着互动积累经验值，解锁独特的龙虾技能。每只龙虾的成长路线都不一样，打造你的专属桌面伙伴。</p>
     </article>
 
     <!-- Feature Card 3 -->
@@ -572,8 +595,8 @@
       <div class="w-14 h-14 bg-petal rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl text-pink-600">devices</span>
       </div>
-      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2">跨平台支持</h3>
-      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">同时支持 macOS 和 Windows 系统，无论你用什么电脑，都能拥有一只桌面小龙虾陪你工作和学习。</p>
+      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2" data-i18n="features.card3Title">跨平台支持</h3>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed" data-i18n="features.card3Desc">同时支持 macOS 和 Windows 系统，无论你用什么电脑，都能拥有一只桌面小龙虾陪你工作和学习。</p>
     </article>
 
     <!-- Feature Card 4 -->
@@ -581,8 +604,8 @@
       <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
         <span class="material-symbols-outlined text-3xl text-primary">volunteer_activism</span>
       </div>
-      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2">免费下载</h3>
-      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">OpenClaw桌面版免费下载，基础养成功能全部免费体验。需要更强大的 AI 算力？可按需解锁高级功能。</p>
+      <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2" data-i18n="features.card4Title">免费下载</h3>
+      <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed" data-i18n="features.card4Desc">OpenClaw桌面版免费下载，基础养成功能全部免费体验。需要更强大的 AI 算力？可按需解锁高级功能。</p>
     </article>
   </div>
 </section>
@@ -590,29 +613,29 @@
 <!-- ========== Stats Section (GEO: statistics boost AI visibility +37%) ========== -->
 <section class="max-w-6xl mx-auto px-4 md:px-8 mt-20 mb-16" id="stats">
   <div class="text-center mb-10">
-    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">用数据说话</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto">OpenClaw桌面龙虾是一款<strong>完全免费</strong>的桌面宠物养成软件，已有超过万名用户选择信赖。</p>
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4" data-i18n="stats.title">用数据说话</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto" data-i18n="stats.subtitle">OpenClaw桌面龙虾是一款<strong>完全免费</strong>的桌面宠物养成软件，已有超过万名用户选择信赖。</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
     <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-6 border border-white/30 dark:border-slate-700 shadow-sm text-center hover:shadow-lg hover:translate-y-[-4px] transition-all">
       <p class="text-primary text-3xl md:text-4xl font-black mb-1">10,000+</p>
-      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">全球用户下载</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium" data-i18n="stats.downloads">全球用户下载</p>
     </div>
     <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-6 border border-white/30 dark:border-slate-700 shadow-sm text-center hover:shadow-lg hover:translate-y-[-4px] transition-all">
       <p class="text-emerald-500 text-3xl md:text-4xl font-black mb-1">20+</p>
-      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">可解锁技能</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium" data-i18n="stats.skills">可解锁技能</p>
     </div>
     <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-6 border border-white/30 dark:border-slate-700 shadow-sm text-center hover:shadow-lg hover:translate-y-[-4px] transition-all">
       <p class="text-indigo-500 text-3xl md:text-4xl font-black mb-1">99.9%</p>
-      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">系统兼容性</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium" data-i18n="stats.compatibility">系统兼容性</p>
     </div>
     <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-6 border border-white/30 dark:border-slate-700 shadow-sm text-center hover:shadow-lg hover:translate-y-[-4px] transition-all">
       <p class="text-amber-500 text-3xl md:text-4xl font-black mb-1">&lt;50MB</p>
-      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">轻量安装包</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium" data-i18n="stats.size">轻量安装包</p>
     </div>
     <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl p-6 border border-white/30 dark:border-slate-700 shadow-sm text-center hover:shadow-lg hover:translate-y-[-4px] transition-all col-span-2 md:col-span-1">
       <p class="text-pink-500 text-3xl md:text-4xl font-black mb-1">4.8<span class="text-lg">/5.0</span></p>
-      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">用户评分</p>
+      <p class="text-slate-500 dark:text-slate-400 text-sm font-medium" data-i18n="stats.rating">用户评分</p>
     </div>
   </div>
 </section>
@@ -621,8 +644,8 @@
 <section class="max-w-6xl mx-auto px-4 md:px-8 mt-20 mb-16" id="credibility">
   <!-- Section Title -->
   <div class="text-center mb-14">
-    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">海外名校团队，打造极致桌面体验</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto">核心团队成员来自全球顶尖学府，深耕游戏交互与 AI 技术领域。</p>
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4" data-i18n="credibility.title">海外名校团队，打造极致桌面体验</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto" data-i18n="credibility.subtitle">核心团队成员来自全球顶尖学府，深耕游戏交互与 AI 技术领域。</p>
   </div>
 
   <!-- University Badges -->
@@ -651,7 +674,7 @@
         </svg>
       </div>
       <div>
-        <p class="text-slate-900 dark:text-white font-bold text-base">哈佛大学</p>
+        <p class="text-slate-900 dark:text-white font-bold text-base" data-i18n="credibility.harvard">哈佛大学</p>
         <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Harvard University</p>
       </div>
     </div>
@@ -674,7 +697,7 @@
         </svg>
       </div>
       <div>
-        <p class="text-slate-900 dark:text-white font-bold text-base">麻省理工学院</p>
+        <p class="text-slate-900 dark:text-white font-bold text-base" data-i18n="credibility.mit">麻省理工学院</p>
         <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">MIT</p>
       </div>
     </div>
@@ -704,7 +727,7 @@
         </svg>
       </div>
       <div>
-        <p class="text-slate-900 dark:text-white font-bold text-base">清华大学</p>
+        <p class="text-slate-900 dark:text-white font-bold text-base" data-i18n="credibility.tsinghua">清华大学</p>
         <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Tsinghua University</p>
       </div>
     </div>
@@ -734,7 +757,7 @@
         </svg>
       </div>
       <div>
-        <p class="text-slate-900 dark:text-white font-bold text-base">斯坦福大学</p>
+        <p class="text-slate-900 dark:text-white font-bold text-base" data-i18n="credibility.stanford">斯坦福大学</p>
         <p class="text-slate-400 dark:text-slate-500 text-xs font-medium">Stanford University</p>
       </div>
     </div>
@@ -742,8 +765,8 @@
 
   <!-- Tech Companies Sub-section -->
   <div class="text-center mb-10">
-    <h3 class="text-slate-900 dark:text-white text-2xl md:text-3xl font-black leading-tight tracking-tight mb-3">顶尖科技公司技术生态</h3>
-    <p class="text-slate-500 dark:text-slate-400 text-base font-medium max-w-2xl mx-auto">团队核心成员拥有全球一线科技公司工作经验，技术实力雄厚。</p>
+    <h3 class="text-slate-900 dark:text-white text-2xl md:text-3xl font-black leading-tight tracking-tight mb-3" data-i18n="credibility.techTitle">顶尖科技公司技术生态</h3>
+    <p class="text-slate-500 dark:text-slate-400 text-base font-medium max-w-2xl mx-auto" data-i18n="credibility.techSubtitle">团队核心成员拥有全球一线科技公司工作经验，技术实力雄厚。</p>
   </div>
 
   <!-- Tech Company Logos -->
@@ -809,49 +832,49 @@
 <!-- ========== Comparison Table Section (GEO: structured data for AI) ========== -->
 <section class="max-w-4xl mx-auto px-4 md:px-8 mt-20 mb-16" id="compare">
   <div class="text-center mb-10">
-    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">为什么选择 OpenClaw？</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto">与市面上其他桌面宠物软件相比，OpenClaw 在多个维度领先。</p>
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4" data-i18n="compare.title">为什么选择 OpenClaw？</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-lg font-medium max-w-2xl mx-auto" data-i18n="compare.subtitle">与市面上其他桌面宠物软件相比，OpenClaw 在多个维度领先。</p>
   </div>
   <div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 shadow-sm overflow-hidden">
     <div class="overflow-x-auto">
       <table class="w-full text-sm">
         <thead>
           <tr class="bg-slate-100 dark:bg-slate-700/50">
-            <th class="text-left px-6 py-4 font-bold text-slate-700 dark:text-slate-200">功能特性</th>
-            <th class="text-center px-6 py-4 font-bold text-primary">OpenClaw 桌面龙虾</th>
-            <th class="text-center px-6 py-4 font-bold text-slate-400">其他桌面宠物</th>
+            <th class="text-left px-6 py-4 font-bold text-slate-700 dark:text-slate-200" data-i18n="compare.headerFeature">功能特性</th>
+            <th class="text-center px-6 py-4 font-bold text-primary" data-i18n="compare.headerOC">OpenClaw 桌面龙虾</th>
+            <th class="text-center px-6 py-4 font-bold text-slate-400" data-i18n="compare.headerOther">其他桌面宠物</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">价格</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ 完全免费</td>
-            <td class="px-6 py-4 text-center text-slate-400">部分付费</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.price">价格</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.priceSelf">✅ 完全免费</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.priceOther">部分付费</td>
           </tr>
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">系统支持</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ Windows + Mac</td>
-            <td class="px-6 py-4 text-center text-slate-400">通常单一系统</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.os">系统支持</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.osSelf">✅ Windows + Mac</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.osOther">通常单一系统</td>
           </tr>
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">技能数量</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ 20+</td>
-            <td class="px-6 py-4 text-center text-slate-400">5-10</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.skillCount">技能数量</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.skillSelf">✅ 20+</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.skillOther">5-10</td>
           </tr>
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">安装难度</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ 一键安装</td>
-            <td class="px-6 py-4 text-center text-slate-400">需要配置</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.install">安装难度</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.installSelf">✅ 一键安装</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.installOther">需要配置</td>
           </tr>
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">资源占用</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ 低（&lt;100MB内存）</td>
-            <td class="px-6 py-4 text-center text-slate-400">较高</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.resource">资源占用</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.resourceSelf">✅ 低（&lt;100MB内存）</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.resourceOther">较高</td>
           </tr>
           <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/30 transition-colors">
-            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300">隐私保护</td>
-            <td class="px-6 py-4 text-center font-bold text-emerald-500">✅ 本地运行，无上传</td>
-            <td class="px-6 py-4 text-center text-slate-400">可能收集数据</td>
+            <td class="px-6 py-4 font-medium text-slate-700 dark:text-slate-300" data-i18n="compare.privacy">隐私保护</td>
+            <td class="px-6 py-4 text-center font-bold text-emerald-500" data-i18n="compare.privacySelf">✅ 本地运行，无上传</td>
+            <td class="px-6 py-4 text-center text-slate-400" data-i18n="compare.privacyOther">可能收集数据</td>
           </tr>
         </tbody>
       </table>
@@ -864,14 +887,14 @@
   <div class="bg-gradient-to-br from-slate-50 to-white dark:from-slate-800/70 dark:to-slate-900/70 backdrop-blur rounded-2xl p-8 md:p-10 border border-white/30 dark:border-slate-700 shadow-sm relative overflow-hidden">
     <div class="absolute top-4 left-6 text-6xl text-primary/10 font-serif leading-none">&ldquo;</div>
     <blockquote class="relative z-10">
-      <p class="text-slate-700 dark:text-slate-200 text-lg md:text-xl leading-relaxed font-medium italic mb-6 pl-6">桌面宠物不仅是娱乐工具，更是提升工作效率和情感陪伴的创新方式。我们将最前沿的技术融入到一只小小的桌面龙虾中，让每一次互动都充满惊喜。</p>
+      <p class="text-slate-700 dark:text-slate-200 text-lg md:text-xl leading-relaxed font-medium italic mb-6 pl-6" data-i18n="quote.text">桌面宠物不仅是娱乐工具，更是提升工作效率和情感陪伴的创新方式。我们将最前沿的技术融入到一只小小的桌面龙虾中，让每一次互动都充满惊喜。</p>
       <footer class="pl-6 flex items-center gap-3">
         <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
           <span class="text-lg">🦞</span>
         </div>
         <div>
-          <cite class="not-italic text-slate-900 dark:text-white font-bold text-sm">OpenClaw Team</cite>
-          <p class="text-slate-400 text-xs">核心团队 · 海外名校背景 · 10年+开发经验</p>
+          <cite class="not-italic text-slate-900 dark:text-white font-bold text-sm" data-i18n="quote.author">OpenClaw Team</cite>
+          <p class="text-slate-400 text-xs" data-i18n="quote.role">核心团队 · 海外名校背景 · 10年+开发经验</p>
         </div>
       </footer>
     </blockquote>
@@ -881,58 +904,58 @@
 <!-- ========== FAQ Section (visible, matches JSON-LD FAQPage) ========== -->
 <section class="max-w-5xl mx-auto px-4 md:px-8 mb-20" id="faq">
   <div class="text-center mb-10">
-    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4">常见问题</h2>
-    <p class="text-slate-500 dark:text-slate-400 text-base font-medium">关于 OpenClaw 桌面龙虾，你可能想了解的一切。</p>
+    <h2 class="text-slate-900 dark:text-white text-3xl md:text-4xl font-black leading-tight tracking-tight mb-4" data-i18n="faq.title">常见问题</h2>
+    <p class="text-slate-500 dark:text-slate-400 text-base font-medium" data-i18n="faq.subtitle">关于 OpenClaw 桌面龙虾，你可能想了解的一切。</p>
   </div>
 
   <div class="space-y-5" id="faqAccordion">
     <details class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 overflow-hidden group" open>
       <summary class="flex items-center justify-between px-6 py-6 cursor-pointer font-bold text-slate-900 dark:text-white text-lg select-none hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
-        OpenClaw桌面版是免费的吗？
+        <span data-i18n="faq.q1">OpenClaw桌面版是免费的吗？</span>
         <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
       </summary>
       <div class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-        OpenClaw桌面版免费下载，支持Mac和Windows系统。基础的桌面宠物养成功能全部免费，部分高级功能（如AI算力）可根据需要付费解锁。
+        <span data-i18n="faq.a1">OpenClaw桌面版免费下载，支持Mac和Windows系统。基础的桌面宠物养成功能全部免费，部分高级功能（如AI算力）可根据需要付费解锁。</span>
       </div>
     </details>
 
     <details class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 overflow-hidden group">
       <summary class="flex items-center justify-between px-6 py-6 cursor-pointer font-bold text-slate-900 dark:text-white text-lg select-none hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
-        OpenClaw桌面版支持哪些操作系统？
+        <span data-i18n="faq.q2">OpenClaw桌面版支持哪些操作系统？</span>
         <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
       </summary>
       <div class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-        OpenClaw桌面版目前支持macOS和Windows两大操作系统。无论你使用苹果电脑还是Windows PC，都可以下载安装OpenClaw桌面版并使用。
+        <span data-i18n="faq.a2">OpenClaw桌面版目前支持macOS和Windows两大操作系统。无论你使用苹果电脑还是Windows PC，都可以下载安装OpenClaw桌面版并使用。</span>
       </div>
     </details>
 
     <details class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 overflow-hidden group">
       <summary class="flex items-center justify-between px-6 py-6 cursor-pointer font-bold text-slate-900 dark:text-white text-lg select-none hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
-        桌面龙虾有哪些互动功能？
+        <span data-i18n="faq.q3">桌面龙虾有哪些互动功能？</span>
         <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
       </summary>
       <div class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-        OpenClaw桌面版支持丰富的互动功能：像素风养成、喂食、玩耍、训练、技能解锁、桌面冒险等。你的小龙虾会随着互动不断成长，解锁专属技能，成为你独一无二的桌面伙伴。
+        <span data-i18n="faq.a3">OpenClaw桌面版支持丰富的互动功能：像素风养成、喂食、玩耍、训练、技能解锁、桌面冒险等。你的小龙虾会随着互动不断成长，解锁专属技能，成为你独一无二的桌面伙伴。</span>
       </div>
     </details>
 
     <details class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 overflow-hidden group">
       <summary class="flex items-center justify-between px-6 py-6 cursor-pointer font-bold text-slate-900 dark:text-white text-lg select-none hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
-        如何下载OpenClaw桌面版？
+        <span data-i18n="faq.q4">如何下载OpenClaw桌面版？</span>
         <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
       </summary>
       <div class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-        访问官网 <a href="https://lobster.pet" class="text-primary hover:underline font-semibold">lobster.pet</a> 即可免费下载Mac版和Windows版的OpenClaw桌面版。点击页面顶部的下载按钮，选择对应的系统版本即可。
+        <span data-i18n="faq.a4">访问官网 lobster.pet 即可免费下载Mac版和Windows版的OpenClaw桌面版。点击页面顶部的下载按钮，选择对应的系统版本即可。</span><a href="https://lobster.pet" style="display:none" class="text-primary hover:underline font-semibold">lobster.pet</a> 即可免费下载Mac版和Windows版的OpenClaw桌面版。点击页面顶部的下载按钮，选择对应的系统版本即可。
       </div>
     </details>
 
     <details class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-white/30 dark:border-slate-700 overflow-hidden group">
       <summary class="flex items-center justify-between px-6 py-6 cursor-pointer font-bold text-slate-900 dark:text-white text-lg select-none hover:bg-white/50 dark:hover:bg-slate-700/50 transition-colors">
-        桌面龙虾会影响电脑性能吗？
+        <span data-i18n="faq.q5">桌面龙虾会影响电脑性能吗？</span>
         <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform">expand_more</span>
       </summary>
       <div class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-        资源占用很小。OpenClaw桌面版经过精心优化，运行时内存占用约 100-200MB，不会影响你的正常办公或游戏体验。它会静静地待在你的桌面上，等待你的互动。
+        <span data-i18n="faq.a5">资源占用很小。OpenClaw桌面版经过精心优化，运行时内存占用约 100-200MB，不会影响你的正常办公或游戏体验。它会静静地待在你的桌面上，等待你的互动。</span>
       </div>
     </details>
   </div>
@@ -944,16 +967,16 @@
     <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
     <div class="absolute bottom-0 left-0 w-64 h-64 bg-primary-coral/30 rounded-full -ml-20 -mb-20 blur-3xl"></div>
     <div class="relative z-10 flex flex-col items-center gap-6">
-      <h2 class="text-3xl md:text-5xl font-black leading-tight">准备好领养你的桌面龙虾了吗？</h2>
+      <h2 class="text-3xl md:text-5xl font-black leading-tight" data-i18n="cta.title">准备好领养你的桌面龙虾了吗？</h2>
       <p class="text-white/80 text-lg font-medium max-w-xl">
-        OpenClaw桌面版网页版已上线！无需下载，打开浏览器即可在线体验。桌面版 Mac/Windows 同步开发中。
+        <span data-i18n="cta.subtitle">OpenClaw桌面版网页版已上线！无需下载，打开浏览器即可在线体验。桌面版 Mac/Windows 同步开发中。</span>
       </p>
       <div class="flex flex-wrap justify-center gap-4 mt-4">
         <a href="https://app.lobster.pet/" target="_blank" rel="noopener" class="bg-white text-primary px-10 py-4 rounded-2xl font-black text-xl shadow-[0_6px_0_0_#eeeeee] hover:translate-y-[-2px] active:translate-y-[2px] active:shadow-none transition-all no-underline">
-          🦞 立即在线体验
+          <span data-i18n="cta.tryOnline">🦞 立即在线体验</span>
         </a>
         <button id="ctaDownloadDesktopBtn" class="bg-primary-coral/40 backdrop-blur-sm border-2 border-white/30 text-white px-10 py-4 rounded-2xl font-bold text-xl hover:bg-white/20 transition-all">
-          🖥️ 桌面版下载
+          <span data-i18n="cta.desktopDownload">🖥️ 桌面版下载</span>
         </button>
       </div>
     </div>
@@ -967,12 +990,12 @@
 <div class="w-9 h-9 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 group-hover:scale-105 transition-transform">
     <img src="./logo.png" alt="OpenClaw桌面龙虾官方Logo - 像素风桌面宠物" class="w-full h-full object-cover" width="36" height="36" loading="lazy">
 </div>
-<span class="text-lg font-bold text-slate-700 dark:text-slate-300">OpenClaw桌面龙虾</span>
+<span class="text-lg font-bold text-slate-700 dark:text-slate-300" data-i18n="footer.brand">OpenClaw桌面龙虾</span>
 </div>
-<nav class="flex gap-8 text-sm font-semibold text-slate-500 dark:text-slate-400" aria-label="底部导航">
-<a class="hover:text-primary transition-colors" href="#" rel="nofollow">隐私政策</a>
-<a class="hover:text-primary transition-colors" href="#" rel="nofollow">用户协议</a>
-<a class="hover:text-primary transition-colors" href="#" rel="nofollow">联系我们</a>
+<nav class="flex gap-8 text-sm font-semibold text-slate-500 dark:text-slate-400" aria-label="Footer Navigation">
+<a class="hover:text-primary transition-colors" href="#" rel="nofollow" data-i18n="footer.privacy">隐私政策</a>
+<a class="hover:text-primary transition-colors" href="#" rel="nofollow" data-i18n="footer.terms">用户协议</a>
+<a class="hover:text-primary transition-colors" href="#" rel="nofollow" data-i18n="footer.contact">联系我们</a>
 </nav>
 <div class="flex gap-4">
 <div class="size-10 rounded-xl bg-slate-200 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all cursor-pointer" aria-label="分享">
@@ -982,10 +1005,10 @@
 </div>
 <!-- SEO: Footer rich text content for crawlers -->
 <div class="max-w-[1200px] mx-auto mt-8 text-slate-400 dark:text-slate-500 text-xs leading-relaxed text-center">
-  <p>OpenClaw桌面版（lobster.pet）又名OpenClaw桌面龙虾，是一款免费桌面宠物养成软件，支持Mac和Windows系统。像素风互动养成、技能解锁、趣味陪伴，立即下载OpenClaw桌面版，在你的电脑桌面养一只可爱的赛博小龙虾。</p>
+  <p data-i18n="footer.seoText">OpenClaw桌面版（lobster.pet）又名OpenClaw桌面龙虾，是一款免费桌面宠物养成软件，支持Mac和Windows系统。像素风互动养成、技能解锁、趣味陪伴，立即下载OpenClaw桌面版，在你的电脑桌面养一只可爱的赛博小龙虾。</p>
 </div>
 <div class="text-center mt-8 text-slate-400 text-xs font-medium">
-                © 2026 OpenClaw桌面版 (Lobster.pet) · 免费桌面宠物养成软件下载
+                <span data-i18n="footer.copyright">© 2026 OpenClaw桌面版 (Lobster.pet) · 免费桌面宠物养成软件下载</span>
             </div>
 </footer>
 </div>

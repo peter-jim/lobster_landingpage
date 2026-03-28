@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "OpenClaw - Free Desktop Pet Lobster | Pixel Art Virtual Pet for Mac & Windows",
+    "description": "OpenClaw is a free desktop pet app. Adopt your own cyber lobster! Available as a web app and desktop download for Mac & Windows. Pixel art style, skill unlocking, interactive adventures.",
+    "ogTitle": "OpenClaw - Your Free Desktop Pet Lobster",
+    "ogDesc": "Adopt a cyber lobster on your desktop! Free pixel-art pet with skill unlocking, interactive adventures. Available for Mac & Windows."
+  },
+  "nav": {
+    "features": "Features",
+    "stats": "Stats",
+    "credibility": "Our Team",
+    "faq": "FAQ",
+    "tryNow": "Try Now"
+  },
+  "hero": {
+    "subtitle": "OpenClaw · Your Personal Desktop Lobster Pet",
+    "desc": "Adopt your own cyber lobster! OpenClaw brings a brand-new desktop pet experience. Web version is live — play instantly in your browser. Interactive fun, skill unlocking & pixel-art adventures.",
+    "downloadMac": "Download for Mac",
+    "downloadWin": "Download for Windows",
+    "macAriaLabel": "Download OpenClaw for Mac",
+    "winAriaLabel": "Download OpenClaw for Windows"
+  },
+  "aff": {
+    "title": "Your friend invited you to try OpenClaw!",
+    "codeLabel": "Invite Code:",
+    "copyBtn": "Copy",
+    "copiedBtn": "Copied",
+    "tip": "Open the app after installing, enter the invite code to get bonus rewards"
+  },
+  "features": {
+    "title": "Why Choose OpenClaw?",
+    "subtitle": "A fun, adorable & intelligent cyber lobster that makes your desktop come alive.",
+    "card1Title": "Pixel Art Style",
+    "card1Desc": "A beautiful pixel-art desktop pet — retro yet modern. Feed, play with, and train your lobster. Watch it grow day by day.",
+    "card2Title": "Skill Unlocking",
+    "card2Desc": "Earn XP through interactions and unlock unique lobster skills. Every lobster's growth path is different — create your one-of-a-kind desktop companion.",
+    "card3Title": "Cross-Platform",
+    "card3Desc": "Supports both macOS and Windows. No matter what computer you use, you can have a desktop lobster to keep you company while working or studying.",
+    "card4Title": "Free to Download",
+    "card4Desc": "OpenClaw is free to download with all core features included. Need more powerful AI capabilities? Premium features available on demand."
+  },
+  "stats": {
+    "title": "The Numbers Speak",
+    "subtitle": "OpenClaw is a <strong>completely free</strong> desktop pet app, trusted by over 10,000 users worldwide.",
+    "downloads": "Global Downloads",
+    "skills": "Unlockable Skills",
+    "compatibility": "System Compatibility",
+    "size": "Lightweight Install",
+    "rating": "User Rating"
+  },
+  "credibility": {
+    "title": "World-Class Team, Premium Desktop Experience",
+    "subtitle": "Our core team members come from top global universities, specializing in game interaction & AI technology.",
+    "harvard": "Harvard University",
+    "mit": "MIT",
+    "tsinghua": "Tsinghua University",
+    "stanford": "Stanford University",
+    "techTitle": "Backed by Top Tech Talent",
+    "techSubtitle": "Core team members bring experience from leading global tech companies."
+  },
+  "compare": {
+    "title": "Why Choose OpenClaw?",
+    "subtitle": "See how OpenClaw stacks up against other desktop pets.",
+    "headerFeature": "Feature",
+    "headerOC": "OpenClaw",
+    "headerOther": "Other Desktop Pets",
+    "price": "Price",
+    "priceSelf": "✅ Completely Free",
+    "priceOther": "Partially Paid",
+    "os": "OS Support",
+    "osSelf": "✅ Windows + Mac",
+    "osOther": "Usually single OS",
+    "skillCount": "Skills",
+    "skillSelf": "✅ 20+",
+    "skillOther": "5-10",
+    "install": "Installation",
+    "installSelf": "✅ One-click Install",
+    "installOther": "Requires setup",
+    "resource": "Resource Usage",
+    "resourceSelf": "✅ Low (<100MB RAM)",
+    "resourceOther": "Higher",
+    "privacy": "Privacy",
+    "privacySelf": "✅ Runs locally, no uploads",
+    "privacyOther": "May collect data"
+  },
+  "quote": {
+    "text": "A desktop pet is more than entertainment — it's an innovative way to boost productivity and provide emotional companionship. We've infused cutting-edge technology into a tiny desktop lobster, making every interaction a delightful surprise.",
+    "author": "OpenClaw Team",
+    "role": "Core Team · Top University Background · 10+ Years Experience"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about OpenClaw.",
+    "q1": "Is OpenClaw free?",
+    "a1": "Yes! OpenClaw is free to download for both Mac and Windows. All core desktop pet features are completely free. Some premium features (like AI compute power) can be unlocked as needed.",
+    "q2": "What operating systems does OpenClaw support?",
+    "a2": "OpenClaw currently supports macOS and Windows. Whether you use a Mac or a Windows PC, you can download and enjoy OpenClaw.",
+    "q3": "What interactive features does OpenClaw have?",
+    "a3": "OpenClaw offers rich interactive features: pixel-art raising, feeding, playing, training, skill unlocking, desktop adventures, and more. Your lobster grows through interactions, unlocking unique skills to become your one-of-a-kind desktop companion.",
+    "q4": "How do I download OpenClaw?",
+    "a4": "Visit the official website lobster.pet to download OpenClaw for free on Mac and Windows. Click the download buttons at the top of the page and select your system version.",
+    "q5": "Will it affect my computer's performance?",
+    "a5": "Not at all. OpenClaw is carefully optimized with minimal resource usage (about 100-200MB RAM). It won't affect your normal work or gaming. It sits quietly on your desktop, waiting for your interaction."
+  },
+  "cta": {
+    "title": "Ready to Adopt Your Desktop Lobster?",
+    "subtitle": "The web version is live! No download needed — play instantly in your browser. Desktop version for Mac/Windows also available.",
+    "tryOnline": "🦞 Try Online Now",
+    "desktopDownload": "🖥️ Desktop Download"
+  },
+  "footer": {
+    "brand": "OpenClaw",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "contact": "Contact Us",
+    "seoText": "OpenClaw (lobster.pet) is a free desktop pet app for Mac and Windows. Pixel-art interactive raising, skill unlocking, and fun companionship. Download OpenClaw now and adopt an adorable cyber lobster on your desktop.",
+    "copyright": "© 2026 OpenClaw (Lobster.pet) · Free Desktop Pet App"
+  },
+  "loading": {
+    "msg1": "Summoning your lobster...",
+    "msg2": "Preparing the adventure map...",
+    "msg3": "Polishing the pixel world...",
+    "msg4": "Lobster warming up...",
+    "msg5": "Almost ready..."
+  },
+  "toast": {
+    "fetchingVersion": "🦞 Fetching latest version...",
+    "downloadMac": "🦞 Downloading Mac {arch} v{version}!",
+    "downloadFallback": "🦞 Downloading fallback v{version}...",
+    "downloadWin": "🦞 Downloading Windows v{version}!",
+    "copyFail": "Copy failed. Please copy the invite code manually: "
+  },
+  "langSwitcher": {
+    "zh-CN": "中文",
+    "en": "English",
+    "ja": "日本語"
+  }
+}
